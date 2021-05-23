@@ -6,11 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
     /* dashboard */
-    // {
-    //     path: '/',
-    //     name: 'Admin',
-    //     component: () => import('../components/dash'),
-    // },
+    {
+        path: '/',
+        name: 'Adminbody',
+        component: () => import('../components/body'),
+    },
     {
         path: '/Admin/product_dash',
         name: 'product_dash',
@@ -20,14 +20,12 @@ const routes = [
     {
         path: '/categories_dash',
         name: 'categories_dash',
-        component: () =>
-            import('../view/All/Category/categories_dash.vue'),
+        component: () => import('../view/All/Category/categories_dash.vue'),
     },
     {
         path: '/newCategory',
         name: 'addnewcategory',
-        component: () =>
-            import('../view/All/Category/addNewCategory'),
+        component: () => import('../view/All/Category/addNewCategory'),
     },
     {
         path: '/categoryview/:id',
