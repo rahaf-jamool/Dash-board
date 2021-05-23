@@ -1,6 +1,6 @@
 <template>
     <div class="parent">
-        <div class="selected">{{ selected }}</div>
+        <div class="selected">Product</div>
         <div class="new_product">
             <button @click="newProduct">New Product</button>
         </div>
@@ -27,7 +27,7 @@
                 </div>
                 <product
                     v-for="items in Product"
-                    :key="items"
+                    :key="items.pr"
                     :id="items.id"
                     :name="items.name"
                     :image="items.image"
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Product from './product.vue';
+import Product from '../Product/product';
 import { mapState } from 'vuex';
 export default {
     name: 'product_dash',
@@ -49,7 +49,7 @@ export default {
     data() {
          
         return {
-            selected: localStorage.getItem('selected'),
+            
         };
     },
     methods: {
@@ -72,8 +72,8 @@ export default {
     height: auto;
     display: grid;
     grid-template-areas:
-        'option selected selected new_product new_product . . . . .'
-        'option contain contain contain contain contain contain contain contain contain';
+        '. . selected new_product new_product . . . . .'
+        '. . contain contain contain contain contain contain contain contain';
 }
 .new_product {
     border-radius: 5px;
