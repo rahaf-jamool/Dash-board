@@ -1,29 +1,21 @@
 <template>
     <div class="sidebar">
-        <router-link to="/Admin/product_dash" class="a"> Product </router-link>
-        <router-link to="/categories_dash" class="a"> Category </router-link>
-        <router-link to="/brand_dash" class="a">Brands</router-link>
-        <router-link to="">Custom field</router-link>
+        <router-link to="/admin/product_dash" class="a"> Product </router-link>
+        <router-link to="/admin/categories_dash" class="a">
+            Category
+        </router-link>
+        <router-link to="/admin/brand_dash" class="a">Brands</router-link>
+        <router-link to="" class="a">Custom field</router-link>
     </div>
 </template>
 
 <script>
 export default {
     name: 'Admin',
-
-    components: {},
-    data() {
-        return {
-            selected: localStorage.getItem('selected'),
-        };
-    },
-    methods: {
-
-    },
-    computed: {},
 };
 </script>
-<style>
+
+<style scoped>
 .sidebar {
     height: 100%;
     width: 160px;

@@ -7,10 +7,8 @@ import router from './router/index';
 import main from '../src/assets/css/main.css';
 // js
 import store from './store/Store';
-import i18n from './js/i18n';
 //libraries
 import 'animate.css';
-import VueI18n from 'vue-i18n';
 import axios from 'axios';
 import 'jquery';
 import VueLazyload from 'vue-lazyload';
@@ -29,7 +27,6 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueLazyload);
 
-Vue.use(VueI18n);
 axios.defaults.baseURL = 'http://edalili.e-dalely.com/public';
 axios.defaults.headers['Accept-Language'] = lang;
 
@@ -37,6 +34,5 @@ new Vue({
     main,
     router,
     store,
-    i18n,
     render: (h) => h(App),
 }).$mount('#app');
