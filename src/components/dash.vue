@@ -10,13 +10,10 @@
 <script>
 export default {
     name: 'Admin',
-
-    components: {},
-    data() {},
 };
 </script>
-<style>
-/* Style the sidebar - fixed full height */
+
+<style scoped>
 .sidebar {
     height: 100%;
     width: 160px;
