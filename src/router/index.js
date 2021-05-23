@@ -16,7 +16,7 @@ const routes = [
         name: 'product_dash',
         component: () => import('../view/All/Product/product_dash.vue'),
     },
-    //category dashboard//
+    ////category dashboard////
     {
         path: '/admin/categories_dash',
         name: 'categories_dash',
