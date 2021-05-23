@@ -1,25 +1,83 @@
 <template>
     <div class="parent">
-         <div class="selected">{{ selected }} <span style="color:red">/</span> Edit Product</div>
+         <div class="selected">Product <span style="color:red">/</span> Edit Product</div>
+         <div class="custom">
+               <div class="custom_Gender">Gender</div>
+              <div >
+                <input 
+                id="radio1" 
+                name="radios" 
+                type="radio" 
+                value= 1 
+                v-model="products.customFeild[0].Gender[0].Male"/>
+                <label for="radio1">Male</label>
+            </div>
+            <div>
+                <input 
+                id="radio2"
+                name="radios" 
+                type="radio"
+                value= 1
+                v-model="products.customFeild[0].Gender[0].Female" />
+                <label for="radio2">Female</label>
+            </div>
+            <hr />    
+            <div class="custom_Size">Size</div>
+              <div >
+                <input 
+                id="radio3" 
+                name="radios"
+                type="radio"
+                value= 1 
+                v-model="products.customFeild[1].Size[0].Large"
+                  />
+                <label for="radio3">Large</label>
+            </div>
+            <div>
+                <input 
+                id="radio4" 
+                name="radios" 
+                type="radio" 
+                value= 1 
+                v-model="products.customFeild[1].Size[0].Medium"
+                />
+                <label for="radio4">Medium</label>
+            </div>
+            <div>
+                <input 
+                id="radio5" 
+                name="radios" 
+                type="radio" 
+                value= 1 
+                v-model="products.customFeild[1].Size[0].Small"
+                />
+                <label for="radio5">Small</label>
+            </div>
+            <hr />  
+            <div class="custom_Brand"> Brand </div>
+            <div v-for="item in Brands" :key="item.id">
+               <input type="checkbox"> {{item.name}}
+            </div>
+         </div>
         <div class="contain">
             <form>
                 <input
                     type="text"
                     v-model="products.product[0].name"
                     placeholder="name"
-                />
+                /><hr/>
                 <br />
                                 <input
                     type="text"
                     v-model="products.product[0].short_des"
                     placeholder="short_des"
-                />
+                /><hr/>
                 <br />
                                 <input
                     type="text"
                     v-model="products.product[0].long_des"
                     placeholder="long_des"
-                />
+                /><hr/>
                 <br />
 
                 <select v-model="products.image">
@@ -42,13 +100,14 @@
 </template>
 
 <script>
+
 import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
     name: 'new_product',
+    components: {},
     data () {
         return {
-             selected: localStorage.getItem('selected'),
             products: {
                 product: [
                     {
@@ -95,15 +154,24 @@ export default {
                     },
                 ],
                 customFeild: [
-                    {
-                        customfield_id: 1,
+                   {
+                    Gender :[ 
+                        {
+                        Male: 0, 
+                        Female: 0
+                        }
+                    ]
                     },
-                    {
-                        customfield_id: 2,
+                                       {
+                    Size :[ 
+                        {
+                        Large: 0,
+                        Medium: 0,
+                        Small: 0
+                        }
+                    ]
                     },
-                    {
-                        customfield_id: 3,
-                    },
+
                 ],
                 images: [
                     {
@@ -136,38 +204,40 @@ export default {
         },
     },
     computed: {
-        ...mapState(['ProductID']),
+        ...mapState(['ProductID','Brands']),
     },
     mounted() {
         this.$store.dispatch('loadProduct', this.$route.params.id);
+        this.$store.dispatch('loadBrands');
+
     },
 };
 </script>
 <style scoped>
 .parent {
     width: 100%;
-    height: auto;
+    height: 654px;
     display: grid;
+    font-size: 18px;
     grid-template-areas:
-        'option selected selected new_product new_product . . . . .'
-        'option contain contain contain contain contain contain contain contain contain';
-}
-.option_dash {
-    grid-area: option;
-    background-color: #ccc;
+        '. . . . selected . . . custom custom'
+        '. contain contain contain contain contain contain contain custom custom';
 }
 
 .selected {
     grid-area: selected;
-    margin: 10px;
+    margin: auto;
     padding: 10px;
+    background-color: #eee;
+}
+.custom {
+    width: 100%;
+    background-color: #ddd;
+    grid-area: custom;
 }
 .contain {
     width: 100%;
     grid-area: contain;
-}
-form input {
-    margin: 20px;
 }
 .parent .save{
     background-color: #18ade8;
@@ -177,5 +247,40 @@ form input {
     color: #fff;
     margin: 20px;
     border-radius: 10px;
+}
+.custom {
+    width: 100%;
+    background-color: #ddd;
+    grid-area: custom;
+}
+.custom_Gender,.custom_Size,.custom_Brand{
+    margin: 10px;
+    border: 1px solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+    background-color: #dec;
+}
+.selected {
+    grid-area: selected;
+    margin: auto;
+    padding: 10px;
+    background-color: #eee;
+}
+.contain {
+    width: 100%;
+    grid-area: contain;
+}
+form input {
+    border: none;
+     margin: 20px;
+}
+form input:focus {
+   outline: none;
+}
+form input:focus::placeholder  {
+    color: transparent;
+}
+form hr {
+    width: 200px;
+    margin: 0 auto;
 }
 </style>
