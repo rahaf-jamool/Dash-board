@@ -12,13 +12,13 @@ const routes = [
         component: () => import('../components/body'),
     },
     {
-        path: '/Admin/product_dash',
+        path: '/admin/product_dash',
         name: 'product_dash',
         component: () => import('../view/All/Product/product_dash.vue'),
     },
     //category dashboard//
     {
-        path: '/categories_dash',
+        path: '/admin/categories_dash',
         name: 'categories_dash',
         component: () => import('../view/All/Category/categories_dash.vue'),
     },
@@ -40,7 +40,7 @@ const routes = [
     },
     //
     {
-        path: '/brand_dash',
+        path: '/admin/brand_dash',
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
     },
