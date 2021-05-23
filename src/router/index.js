@@ -12,7 +12,7 @@ const routes = [
     //     component: () => import('../components/dash'),
     // },
     {
-        path: '/Admin/product_dash',
+        path: '/admin/product_dash',
         name: 'product_dash',
         component: () => import('../view/All/Product/product_dash.vue'),
     },
