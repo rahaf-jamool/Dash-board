@@ -9,7 +9,7 @@
 import dash from '../../../components/dash';
 export default {
     name: 'brand_dash',
-    components: {dash},
+    components: { dash },
     data() {
         return {};
     },

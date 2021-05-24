@@ -12,12 +12,6 @@
                         </router-link>
                     </div>
                     <hr class="bg-info mt-5" />
-                    <div class="alert alert-danger" v-if="errorMsg">
-                        Error Massage
-                    </div>
-                    <div class="alert alert-success" v-if="successMsg">
-                        Success Massage
-                    </div>
                 </div>
                 <div class="nav_Product">
                     <table class="table table-striped product">
@@ -35,7 +29,6 @@
                                 class="text-center"
                                 v-for="items in Categories"
                                 :key="items"
-                                :id="items.id"
                             >
                                 <td>
                                     <input
@@ -92,32 +85,12 @@
 
 <script>
 import { mapState } from 'vuex';
-// import axios from 'axios';
 export default {
     name: 'categories_dash',
-    data () {
-        return {
-            selected: 'catlog',
-            errorMsg: '',
-            successMsg: '',
-            showEditModal: false,
-            showDeleteModal: false,
-            details: {
-                id: this.items.id,
-            },
-        };
-    },
     methods: {
         delettcategory(items) {
             this.$store.dispatch('deleteCategory', items);
         },
-        // delettcategory() {
-        //     axios.put(
-        //         `http://edalili.e-dalely.com/public/api/categories/trash/${this.id}`,
-        //         this.details
-        //     );
-        //     // console.log(JSON.stringify(this.is_active));
-        // },
     },
     computed: {
         ...mapState(['Categories']),
