@@ -7,60 +7,62 @@
             <div class="custom_Gender">Gender</div>
             <div>
                 <input
-                    id="radio1"
-                    name="radios"
-                    type="radio"
+                    name="checkbox"
+                    type="checkbox"
                     value="1"
                     v-model="products.customFeild[0].Gender[0].Male"
                 />
-                <label for="radio1">Male</label>
+                <label >Male</label>
             </div>
             <div>
                 <input
-                    id="radio2"
-                    name="radios"
-                    type="radio"
+                    name="checkbox"
+                    type="checkbox"
                     value="1"
                     v-model="products.customFeild[0].Gender[0].Female"
                 />
-                <label for="radio2">Female</label>
+                <label>Female</label>
             </div>
             <hr />
             <div class="custom_Size">Size</div>
             <div>
                 <input
-                    id="radio3"
-                    name="radios"
-                    type="radio"
+                    name="checkbox"
+                    type="checkbox"
                     value="1"
                     v-model="products.customFeild[1].Size[0].Large"
                 />
-                <label for="radio3">Large</label>
+                <label>Large</label>
             </div>
             <div>
                 <input
-                    id="radio4"
-                    name="radios"
-                    type="radio"
+                    name="checkbox"
+                    type="checkbox"
                     value="1"
                     v-model="products.customFeild[1].Size[0].Medium"
                 />
-                <label for="radio4">Medium</label>
+                <label>Medium</label>
             </div>
             <div>
                 <input
-                    id="radio5"
-                    name="radios"
-                    type="radio"
+                    name="checkbox"
+                    type="checkbox"
                     value="1"
                     v-model="products.customFeild[1].Size[0].Small"
                 />
-                <label for="radio5">Small</label>
+                <label>Small</label>
             </div>
             <hr />
             <div class="custom_Brand">Brand</div>
-            <div v-for="item in Brands" :key="item.id">
-                <input type="checkbox" /> {{ item.name }}
+            <div  v-for="item in Brands" :key="item.id">
+                <input
+                    :id="`radio${item.id}`"
+                    name="radios"
+                    type="radio"
+                    :value="item.id"
+                   
+                />
+                <label :for="`radio${item.id}`">{{item.name}}</label>
             </div>
         </div>
         <div class="contain">
@@ -257,9 +259,10 @@ export default {
 .custom_Size,
 .custom_Brand {
     margin: 10px;
-    border: 1px solid;
+    border: 0px solid;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
     background-color: #dec;
+    text-shadow: 2px 2px 8px #f71919;
 }
 .selected {
     grid-area: selected;
