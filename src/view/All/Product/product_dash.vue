@@ -47,10 +47,7 @@ export default {
         Product,
     },
     data() {
-         
-        return {
-            
-        };
+        return {};
     },
     methods: {
         newProduct() {
