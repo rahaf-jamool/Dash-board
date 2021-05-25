@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
     /* dashboard */
     {
-        path: '/',
+        path: '/Admin',
         name: 'Adminbody',
         component: () => import('../components/body'),
     },
