@@ -21,6 +21,7 @@
                                 <th class="img">Image</th>
                                 <th class="name">Name</th>
                                 <th class="status">Status</th>
+                              <th class="section">Section</th>
                                 <th class="edit">Action</th>
                             </tr>
                         </thead>
@@ -49,6 +50,9 @@
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
                                 </td>
+                              <td>
+                                {{ items.section_id }}
+                              </td>
                                 <td class="Action">
                                     <router-link
                                         :to="{
@@ -93,10 +97,11 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories']),
+        ...mapState(['Categories','Section']),
     },
     mounted() {
         this.$store.dispatch('loadCategories');
+      this.$store.dispatch('loadSections');
     },
 };
 </script>

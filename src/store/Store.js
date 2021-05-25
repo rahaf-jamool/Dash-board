@@ -16,6 +16,8 @@ export default new Vuex.Store({
         Brands: [],
         Categories: [],
         CategoryID: null,
+        Section:[],
+        SectionID:null,
         priceArray: [],
     },
     mutations: {
@@ -43,6 +45,12 @@ export default new Vuex.Store({
         Delete_Category(state, itemsId) {
             let Categories = state.Categories.filter((v) => v.id != itemsId);
             state.Categories = Categories;
+        },
+        SET_Sections(state, Section) {
+            state.Section = Section;
+        },
+        SET_SectionID(state, SectionID) {
+            state.SectionID = SectionID;
         },
     },
     actions: {
@@ -136,6 +144,30 @@ export default new Vuex.Store({
                 commit('Delete_Category', items.id)
             );
         },
+        loadSection({ commit }, SectionID) {
+            axios
+                .get(`/api/sections/getById/${SectionID}?lang=${lang}`)
+                .then((res) => {
+                    console.warn('SectionID :', res.data);
+                    let SectionID = res.data;
+                    commit('SET_SectionID', SectionID);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadSections({ commit }) {
+            axios
+                .get(`/api/Section/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Sections :', res.data.Section);
+                    let Section = res.data.Section;
+                    commit('SET_Sections', Section);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        }
     },
     getters: {
         avalibleStore: (state) => {
