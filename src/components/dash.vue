@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <router-link to="/admin/product_dash" class="a"> Product </router-link>
+        <router-link to="/admin/product_dash" class="a"> Products </router-link>
         <router-link to="/admin/categories_dash" class="a">
             Category
         </router-link>

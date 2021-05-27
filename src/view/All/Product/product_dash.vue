@@ -1,6 +1,6 @@
 <template>
     <div class="parent">
-        <div class="selected">Product</div>
+        <div class="selected">Products</div>
         <div class="new_product">
             <button @click="newProduct">New Product</button>
         </div>

@@ -8,7 +8,7 @@ const routes = [
     /* dashboard */
     {
         path: '/admin',
-        name: 'Adminbody',
+        name: 'admin',
         component: () => import('../components/body'),
     },
     {
