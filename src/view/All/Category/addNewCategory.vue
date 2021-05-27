@@ -20,16 +20,6 @@
                                             required
                                         />
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <input
-                                            id="inputSulg"
-                                            type="text"
-                                            class="form-control form-control-lg"
-                                            placeholder="Status"
-                                            v-model="Categories.is_active"
-                                            required
-                                        />
-                                    </div> -->
                                     <div class="form-group">
                                         <label
                                             ><input
@@ -94,6 +84,14 @@
                                             width="336"
                                             height="69"
                                         />
+                                        <img
+                                            id="drag1"
+                                            src="../../../../public/img/rr.jpg"
+                                            draggable="true"
+                                            ondragstart="drag(event)"
+                                            width="336"
+                                            height="69"
+                                        />
                                     </div>
 
                                     <div class="form-group">
@@ -119,9 +117,6 @@
                                 <h5 class="card-title">
                                     {{ Categories.category[2].name }}
                                 </h5>
-                                <p class="card-text">
-                                    {{ Categories.is_active }}
-                                </p>
                             </div>
                         </div>
                     </div>

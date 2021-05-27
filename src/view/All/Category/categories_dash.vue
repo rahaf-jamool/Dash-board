@@ -46,7 +46,9 @@
                                 <td>{{ items.section_id }}</td>
                                 <td>
                                     <i
-                                        v-if="items.is_active == 'Active'"
+                                        v-if="
+                                            (items.is_active == 'Active') | '0'
+                                        "
                                         class="fa fa-check"
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
