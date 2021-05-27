@@ -17,6 +17,8 @@ export default new Vuex.Store({
         Categories: [],
         CategoryID: null,
         priceArray: [],
+        sections: [],
+        SectionID: null,
     },
     mutations: {
         SET_Stores(state, Stores) {
@@ -43,6 +45,12 @@ export default new Vuex.Store({
         Delete_Category(state, itemsId) {
             let Categories = state.Categories.filter((v) => v.id != itemsId);
             state.Categories = Categories;
+        },
+        SET_Sections(state, sections) {
+            state.sections = sections;
+        },
+        SET_SectionID(state, SectionID) {
+            state.SectionID = SectionID;
         },
     },
     actions: {
@@ -135,6 +143,30 @@ export default new Vuex.Store({
                 `http://edalili.e-dalely.com/public/api/categories/trash/${items.id}`,
                 commit('Delete_Category', items.id)
             );
+        },
+        loadSections({ commit }) {
+            axios
+                .get(`/api/sections/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Sections :', res.data.Section);
+                    let sections = res.data.Section;
+                    commit('SET_Sections', sections);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        loadSection({ commit }, SectionID) {
+            axios
+                .get(`/api/sections/getById/${SectionID}?lang=${lang}`)
+                .then((res) => {
+                    console.warn('SectionID :', res.data);
+                    let SectionID = res.data;
+                    commit('SET_SectionID', SectionID);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
         },
     },
     getters: {
