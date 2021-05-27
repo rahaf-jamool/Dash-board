@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        Update Category {{ categories.category[0].name }}
+                        Update Category {{ categories.category[2].name }}
                     </h5>
                 </div>
                 <div class="modal-body p-4">
@@ -13,7 +13,7 @@
                             type="text"
                             class="form-control form-control-lg"
                             placeholder="Name"
-                            v-model="categories.category[0].name"
+                            v-model="categories.category[2].name"
                         />
                     </div>
                     <div class="form-group">
@@ -40,7 +40,7 @@ export default {
             categories: {
                 category: [
                     {
-                        name: null,
+                        name: 'jhbnjhbn',
                         local: 'en',
                         language_id: 1,
                     },
@@ -50,7 +50,7 @@ export default {
                         language_id: 1,
                     },
                     {
-                        name: 'علاء',
+                        name: null,
                         local: 'ar',
                         language_id: 1,
                     },
@@ -61,8 +61,8 @@ export default {
                 image: 'https://img.lovepik.com/photo/50015/8348.jpg_wh860.jpg',
                 lang_id: 1,
                 section_id: 1,
-                created_at: null,
-                updated_at: null,
+                created_at: 1,
+                updated_at: 1,
             },
         };
     },

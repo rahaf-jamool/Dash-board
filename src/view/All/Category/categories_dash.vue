@@ -20,6 +20,7 @@
                                 <th class="id">Id</th>
                                 <th class="img">Image</th>
                                 <th class="name">Name</th>
+                                <th>Section</th>
                                 <th class="status">Status</th>
                                 <th class="edit">Action</th>
                             </tr>
@@ -42,6 +43,7 @@
                                 <td>
                                     {{ items.name }}
                                 </td>
+                                <td>{{ items.section_id }}</td>
                                 <td>
                                     <i
                                         v-if="items.is_active == 'Active'"
