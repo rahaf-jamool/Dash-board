@@ -6,6 +6,24 @@
                 <div id="overlay1 mt-5 col-9">
                     <div class="modal-dialog">
                         <div class="modal-content">
+                            <div class="alert" id="alert">
+                                <span
+                                    class="closebtn"
+                                    onclick="this.parentElement.style.display='none';"
+                                    >&times;</span
+                                >
+                                <strong>Danger!</strong> You must fill in all
+                                fields.
+                            </div>
+                            <div class="alertt" id="alertt">
+                                <span
+                                    class="closebtn"
+                                    onclick="this.parentElement.style.display='none';"
+                                    >&times;</span
+                                >
+                                <strong>Good</strong> "operation accomplished
+                                successfully.
+                            </div>
                             <div class="form" id="form">
                                 <div class="modal-body p-4">
                                     <div class="form-group">
@@ -190,8 +208,18 @@ export default {
                 'http://edalili.e-dalely.com/public/api/categories/create',
                 this.Categories
             );
-            console.log(JSON.stringify(this.Categories));
-            this.$router.push({ name: 'categories_dash' });
+            if (
+                this.Categories.category[2].name == null ||
+                this.Categories.section_id == null ||
+                this.Categories.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alert').classList.remove('block');
+                document.getElementById('alertt').classList.add('block');
+                console.log(JSON.stringify(this.Categories));
+                this.$router.push({ name: 'categories_dash' });
+            }
         },
         allowDrop(ev) {
             ev.preventDefault();
@@ -268,5 +296,25 @@ img {
 /* On mouse-over */
 .sidenav .a:hover {
     color: #f1f1f1;
+}
+.alert {
+    display: none;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    transition: all 0.5s;
+}
+.alertt {
+    display: none;
+    padding: 20px;
+    background-color: #00b618;
+    color: white;
+}
+.block {
+    display: block;
+}
+.containd_Categorires {
+    height: 130px;
+    overflow-y: scroll;
 }
 </style>

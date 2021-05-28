@@ -4,6 +4,24 @@
             <div id="overlay2 mt-5">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                        <div class="alert" id="alert">
+                            <span
+                                class="closebtn"
+                                onclick="this.parentElement.style.display='none';"
+                                >&times;</span
+                            >
+                            <strong>Danger!</strong> You must fill in all
+                            fields.
+                        </div>
+                        <div class="alertt" id="alertt">
+                            <span
+                                class="closebtn"
+                                onclick="this.parentElement.style.display='none';"
+                                >&times;</span
+                            >
+                            <strong>Good</strong> "operation accomplished
+                            successfully.
+                        </div>
                         <div class="modal-header">
                             <h5 class="modal-title">
                                 Update Category
@@ -19,13 +37,22 @@
                                     v-model="categories.category[2].name"
                                 />
                             </div>
-                            <div class="form-group">
-                                <label
+                            <div class="form-group d-flex">
+                                Section<label
                                     ><input
                                         id="choiceLabel"
                                         type="label"
                                         class="form-control form-control-lg"
                                         v-model="categories.section_id"
+                                        required
+                                /></label>
+                            </div>
+                            <div class="form-group d-flex">
+                                Parent Category<label
+                                    ><input
+                                        type="label"
+                                        class="form-control form-control-lg"
+                                        v-model="categories.parent_id"
                                         required
                                 /></label>
                             </div>
@@ -106,9 +133,9 @@
             </div>
         </div>
         <div class="sidenav col-3">
-            <div>
-                <div class="a">Section</div>
-                <div class="form-check">
+            <div class="mb-3">
+                <div class="a1">SECTIONS</div>
+                <div class="form-check containd_Categorires">
                     <label
                         class="form-check-label a"
                         v-for="item in sections"
@@ -125,7 +152,26 @@
                     </label>
                 </div>
             </div>
-            <div class="a">Category parent</div>
+            <div>
+                <div class="a1">PARENT CATEGORIES</div>
+                <div class="form-check containd_Categorires">
+                    <label
+                        class="form-check-label a"
+                        v-for="category in Categories"
+                        :key="category"
+                        :id="'select' + category.id"
+                    >
+                        <input
+                            type="radio"
+                            class="form-check-input"
+                            name="choice1"
+                            v-model="categories.parent_id"
+                            :value="category.id"
+                            @click="sendAdvert(category.id)"
+                        />{{ category.name }}
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -157,7 +203,7 @@ export default {
                 ],
                 slug: 'hbhjb',
                 is_active: 1,
-                parent_id: 1,
+                parent_id: null,
                 image: null,
                 lang_id: 1,
                 section_id: null,
@@ -167,9 +213,10 @@ export default {
         };
     },
     computed: {
-        ...mapState(['CategoryID', 'sections']),
+        ...mapState(['CategoryID', 'sections', 'Categories']),
     },
     mounted() {
+        this.$store.dispatch('loadCategories');
         this.$store.dispatch('loadCategory', this.$route.params.id);
         this.$store.dispatch('loadSections');
     },
@@ -179,8 +226,18 @@ export default {
                 `http://edalili.e-dalely.com/public/api/categories/update/${this.CategoryID.id}`,
                 this.categories
             );
-            console.log(JSON.stringify(this.categories));
-            this.$router.push({ name: 'categories_dash' });
+            if (
+                this.categories.category[2].name == null ||
+                this.categories.section_id == null ||
+                this.categories.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alert').classList.remove('block');
+                document.getElementById('alertt').classList.add('block');
+                console.log(JSON.stringify(this.categories));
+                this.$router.push({ name: 'categories_dash' });
+            }
         },
         allowDrop(ev) {
             ev.preventDefault();
@@ -235,7 +292,8 @@ img {
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav .a {
+.sidenav .a,
+.a1 {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 20px;
@@ -252,5 +310,25 @@ img {
 /* On mouse-over */
 .sidenav .a:hover {
     color: #f1f1f1;
+}
+.alert {
+    display: none;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    transition: all 0.5s;
+}
+.alertt {
+    display: none;
+    padding: 20px;
+    background-color: #00b618;
+    color: white;
+}
+.block {
+    display: block;
+}
+.containd_Categorires {
+    height: 200px;
+    overflow-y: scroll;
 }
 </style>

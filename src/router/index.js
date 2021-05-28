@@ -21,11 +21,13 @@ const routes = [
         path: '/admin/categories_dash',
         name: 'categories_dash',
         component: () => import('../view/All/Category/categories_dash.vue'),
+        params: true,
     },
     {
         path: '/newCategory',
         name: 'addnewcategory',
         component: () => import('../view/All/Category/addNewCategory'),
+        params: true,
     },
     {
         path: '/categoryview/:id',
@@ -37,6 +39,7 @@ const routes = [
         path: '/categoryEdit/:id',
         name: 'categoryEdit',
         component: () => import('../view/All/Category/categoryEdit'),
+        params: true,
     },
     //
     {
