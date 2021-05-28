@@ -9,8 +9,7 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                    value="1"
-                   
+                   @click="HandelMaleGender"
                 />
                 <label >Male</label>
             </div>
@@ -18,8 +17,7 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                    value="1"
-                   
+                    @click="HandelFemaleGender"
                 />
                 <label>Female</label>
             </div>
@@ -29,8 +27,7 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                    value="1"
-                 
+                    @click="HandelLargeSize"
                 />
                 <label>Large</label>
             </div>
@@ -38,8 +35,7 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                    value="1"
-                    
+                    @click="HandelMediumSize"
                 />
                 <label>Medium</label>
             </div>
@@ -47,14 +43,13 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                    value="1"
-                   
+                    @click="HandelSmallSize"
                 />
                 <label>Small</label>
             </div>
             <hr />
             <div class="custom_Brand">Brand</div>
-            <div class="containd_Categorires">
+                <div class="containd_Categorires">
             <div  v-for="item in Brands" :key="item.pr">
                 <input
                     :id="`radio${item.id}`"
@@ -80,12 +75,11 @@
                 <label :for="`radio${items.id}`">{{items.name}}</label>
             </div>
             </div>
-
         </div>
         <div class="contain">
             <div class="alert" id="alert">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                <strong>Danger!</strong> You must fill in all fields.
+                <strong>Warning!</strong> You must fill in all fields.
             </div>
             <div class="alertt" id="alertt">
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -113,25 +107,6 @@
                 />
                 <hr />
                 <br />
-
-             <!-- <select v-model="products.image">
-                    <option disabled value="">Please select img</option>
-                    <option
-                        value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy6iZq7N0bOew1ttlwpQRgf-SmI4MHbWZU3Q&usqp=CAU"
-                    >
-                        img 1
-                    </option>
-                    <option
-                        value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy6iZq7N0bOew1ttlwpQRgf-SmI4MHbWZU3Q&usqp=CAU"
-                    >
-                        img 2
-                    </option>
-                    <option
-                        value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy6iZq7N0bOew1ttlwpQRgf-SmI4MHbWZU3Q&usqp=CAU"
-                    >
-                        img 3
-                    </option>
-                </select>    -->
             </form>
             <UploadImages class="upload_img" :max="3" @change="handleImages" />
             <button class="save" @click="updateProduct()">save</button>
@@ -236,7 +211,22 @@ export default {
             }
             console.log(JSON.stringify(this.products));
         },
-            handleImages(Imgs){
+        HandelMaleGender(){
+        this.products.customFeild[0].Gender[0] = {Male: 1,Female: 0}
+        },
+        HandelFemaleGender(){
+        this.products.customFeild[0].Gender[0] = {Male: 0,Female: 1}
+        },
+        HandelLargeSize(){
+        this.products.customFeild[1].Size[0] = {Large: 1,Medium: 0,Small: 0}
+        },
+        HandelMediumSize(){
+             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 1,Small: 0}
+        },
+        HandelSmallSize(){
+             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 0,Small: 1}
+        },
+        handleImages(Imgs){
                this.products.image = "http://localhost:8080/img/"+Imgs[0].name;
                 for (var i=0;i<Imgs.length;i++) {
                      
@@ -339,16 +329,26 @@ form hr {
 }
 .alert {
   display: none;
-  padding: 20px;
+  padding: 80px;
   background-color: #f44336;
   color: white;
-  transition: all .5s;
+  position: absolute;
+  right: 40%;
+  top: 30%;
+  z-index: 3;
+  font-size: 20px;
 }
 .alertt {
   display: none;
-  padding: 20px;
+  padding: 80px;
   background-color: #00b618;
   color: white;
+  position: absolute;
+   right: 40%;
+  top: 30%;
+  z-index: 3;
+  font-size: 20px;
+
 }
 .block{
     display: block;
