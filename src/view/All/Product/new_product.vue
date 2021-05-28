@@ -1,7 +1,8 @@
 <template>
     <div class="parent">
+
         <div class="selected">
-            Product <span style="color: red">/</span> New Product
+            Products <span style="color: red">/</span> New Products
         </div>
         <div class="custom">
             <div class="custom_Gender">Gender</div>
@@ -60,12 +61,22 @@
                     name="radios"
                     type="radio"
                     :value="item.id"
+                    v-model="products.brand_id"
                    
                 />
                 <label :for="`radio${item.id}`">{{item.name}}</label>
             </div>
         </div>
         <div class="contain">
+        <div class="alert" id="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Danger!</strong> You must fill in all fields.
+        </div>
+        <div class="alertt" id="alertt">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <strong>Good</strong> "operation accomplished successfully.
+        </div>
+
             <form>
                 <input
                     type="text"
@@ -152,12 +163,12 @@ export default {
                         long_des: 'fr fr',
                     },
                 ],
-                brand_id: '1',
+                brand_id: null,
                 barcode: 'mobiles',
                 slug: 'mobiles',
                 rating_id: 1,
                 offer_id: 1,
-                image: 1,
+                image: null,
                 custom_feild_id: 1,
                 is_active: 1,
                 is_appear: 1,
@@ -219,6 +230,13 @@ export default {
                 'http://edalili.e-dalely.com/public/api/products/create',
                 this.products
             );
+            if(this.products.product[0].name == null || this.products.product[0].short_des == null || this.products.product[0].long_des == null || this.products.image == null){
+               // alert("You must fill in all fields");
+                  document.getElementById('alert').classList.add('block')  ;
+            }
+            else{
+                document.getElementById('alertt').classList.add('block')  ;
+            }
 
             console.log(JSON.stringify(this.products));
         },
@@ -286,5 +304,37 @@ form input:focus::placeholder {
 form hr {
     width: 200px;
     margin: 0 auto;
+}
+
+.alert {
+  display: none;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  transition: all .5s;
+}
+.alertt {
+  display: none;
+  padding: 20px;
+  background-color: #00b618;
+  color: white;
+}
+.block{
+    display: block;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
 </style>

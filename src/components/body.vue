@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: 'Adminbody',
+    name: 'admin',
 };
 </script>
 
