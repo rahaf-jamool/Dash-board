@@ -54,7 +54,7 @@
             <div  v-for="item in Brands" :key="item.pr">
                 <input
                     :id="`radio${item.id}`"
-                    name="radios"
+                    name="radios1"
                     type="radio"
                     :value="item.id"
                     v-model="products.brand_id"
@@ -67,7 +67,7 @@
             <div  v-for="items in Categories" :key="items.pr">
                 <input
                     :id="`radio${items.id}`"
-                    name="radios"
+                    name="radios2"
                     type="radio"
                     :value="items.id"
                     v-model="products.category_id"
