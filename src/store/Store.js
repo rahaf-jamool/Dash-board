@@ -16,9 +16,9 @@ export default new Vuex.Store({
         Brands: [],
         Categories: [],
         CategoryID: null,
+        SectionID:null,
         priceArray: [],
         sections: [],
-        SectionID: null,
     },
     mutations: {
         SET_Stores(state, Stores) {
@@ -167,8 +167,8 @@ export default new Vuex.Store({
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
-        },
-    },
+
+    },},
     getters: {
         avalibleStore: (state) => {
             let len = state.Product[0].store.length;

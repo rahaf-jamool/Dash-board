@@ -33,7 +33,7 @@
                                             class="form-control form-control-lg"
                                             placeholder="Name"
                                             v-model="
-                                                Categories.category[2].name
+                                                categories.category[2].name
                                             "
                                             required
                                         />
@@ -44,7 +44,7 @@
                                                 id="choiceLabel"
                                                 type="label"
                                                 class="form-control form-control-lg"
-                                                v-model="Categories.section_id"
+                                                v-model="categories.section_id"
                                                 required
                                         /></label>
                                     </div>
@@ -56,14 +56,13 @@
                                             type="text"
                                             class="form-control form-control-lg div1"
                                             placeholder="ImageURL"
-                                            v-model="Categories.image"
+                                            v-model="categories.image"
                                             required
                                         />
                                     </div>
                                     <br />
                                     <div style="display: flex">
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/aa.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -71,7 +70,6 @@
                                             height="69"
                                         />
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/elctronic.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -79,7 +77,6 @@
                                             height="69"
                                         />
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/buty.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -87,7 +84,6 @@
                                             height="69"
                                         />
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/kitchen.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -95,7 +91,6 @@
                                             height="69"
                                         />
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/gasses.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -103,7 +98,6 @@
                                             height="69"
                                         />
                                         <img
-                                            id="drag1"
                                             src="../../../../public/img/rr.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
@@ -128,12 +122,12 @@
                 <div class="col-3 card ml-5" style="max-width: 540px">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img :src="Categories.image" class="card-img" />
+                            <img :src="categories.image" class="card-img" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    {{ Categories.category[2].name }}
+                                    {{ categories.category[2].name }}
                                 </h5>
                             </div>
                         </div>
@@ -142,26 +136,45 @@
             </div>
         </div>
         <div class="sidenav col-3">
-            <div>
+            <div class="mb-4">
                 <div class="a">Section</div>
-                <div class="form-check">
+                <div class="form-check containd_Categorires">
                     <label
                         class="form-check-label a"
                         v-for="item in sections"
-                        :key="item"
+                        :key="item.id"
                     >
                         <input
                             type="radio"
                             class="form-check-input"
                             name="choice"
-                            v-model="Categories.section_id"
+                            v-model="categories.section_id"
                             :value="item.id"
                             @click="choiceradio()"
                         />{{ item.name }}
                     </label>
                 </div>
             </div>
-            <div class="a">Category parent</div>
+          <div>
+            <div class="a1">PARENT CATEGORIES</div>
+            <div class="form-check containd_Categorires">
+              <label
+                  class="form-check-label a"
+                  v-for="category in Categories"
+                  :key="category.id"
+                  :id="'select' + category.id"
+              >
+                <input
+                    type="radio"
+                    class="form-check-input"
+                    name="choice1"
+                    v-model="categories.parent_id"
+                    :value="category.id"
+                    @click="sendAdvert(category.id)"
+                />{{ category.name }}
+              </label>
+            </div>
+          </div>
         </div>
     </div>
 </template>
@@ -174,7 +187,7 @@ export default {
     data() {
         return {
             // showAddModal: false,
-            Categories: {
+          categories: {
                 category: [
                     {
                         name: 'gvhghv',
@@ -247,10 +260,12 @@ export default {
         },
     },
     computed: {
-        ...mapState(['sections']),
+        ...mapState(['sections','Categories']),
     },
     mounted() {
         this.$store.dispatch('loadSections');
+      this.$store.dispatch('loadCategories');
+      // this.$store.dispatch('loadCategory', this.$route.params.id);
     },
 };
 </script>
@@ -314,7 +329,7 @@ img {
     display: block;
 }
 .containd_Categorires {
-    height: 130px;
+    height:200px;
     overflow-y: scroll;
 }
 </style>

@@ -20,7 +20,7 @@
                                 <th class="id">Id</th>
                                 <th class="img">Image</th>
                                 <th class="name">Name</th>
-                                <th>Section</th>
+                              <th>Section</th>
                                 <th class="status">Status</th>
                                 <th class="edit">Action</th>
                             </tr>
@@ -29,7 +29,7 @@
                             <tr
                                 class="text-center"
                                 v-for="items in Categories"
-                                :key="items"
+                                :key="items.id"
                             >
                                 <td>
                                     <input
@@ -47,8 +47,8 @@
                                 <td>
                                     <i
                                         v-if="
-                                            (items.is_active == 'Active') | '0'
-                                        "
+                                        (items.is_active == 'Active')
+                                      "
                                         class="fa fa-check"
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
@@ -65,7 +65,7 @@
                                     <router-link
                                         :to="{
                                             name: 'categoryEdit',
-                                            params: { id: items.id },
+                                           params: { id: items.id },
                                         }"
                                         class="text-success mr-4"
                                         @click="showEditModal = true"
@@ -97,10 +97,11 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories']),
+        ...mapState(['Categories','Section']),
     },
     mounted() {
         this.$store.dispatch('loadCategories');
+      this.$store.dispatch('loadSections');
     },
 };
 </script>
