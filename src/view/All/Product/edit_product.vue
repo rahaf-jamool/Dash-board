@@ -49,11 +49,11 @@
             </div>
             <hr />
             <div class="custom_Brand">Brand</div>
-                <div class="containd_Categorires">
+                <div class="containd_Brands">
             <div  v-for="item in Brands" :key="item.pr">
                 <input
                     :id="`radio${item.id}`"
-                    name="radios"
+                    name="radios1"
                     type="radio"
                     :value="item.id"
                     v-model="products.brand_id"
@@ -66,7 +66,7 @@
             <div  v-for="items in Categories" :key="items.pr">
                 <input
                     :id="`radio${items.id}`"
-                    name="radios"
+                    name="radios2"
                     type="radio"
                     :value="items.id"
                     v-model="products.category_id"
@@ -299,7 +299,8 @@ export default {
     background-color: #dec;
     text-shadow: 2px 2px 8px #f71919;
 }
-.containd_Categorires{
+.containd_Categorires,
+.containd_Brands{
      height: 130px;
     overflow-y: scroll;
 }
