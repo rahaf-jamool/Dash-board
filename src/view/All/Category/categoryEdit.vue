@@ -71,7 +71,6 @@
                             <br />
                             <div style="display: flex">
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/aa.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -79,7 +78,6 @@
                                     height="69"
                                 />
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/elctronic.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -87,7 +85,6 @@
                                     height="69"
                                 />
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/buty.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -95,7 +92,6 @@
                                     height="69"
                                 />
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/kitchen.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -103,7 +99,6 @@
                                     height="69"
                                 />
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/gasses.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -111,7 +106,6 @@
                                     height="69"
                                 />
                                 <img
-                                    id="drag1"
                                     src="../../../../public/img/rr.jpg"
                                     draggable="true"
                                     ondragstart="drag(event)"
@@ -139,7 +133,7 @@
                     <label
                         class="form-check-label a"
                         v-for="item in sections"
-                        :key="item"
+                        :key="item.id"
                     >
                         <input
                             type="radio"
@@ -158,7 +152,7 @@
                     <label
                         class="form-check-label a"
                         v-for="category in Categories"
-                        :key="category"
+                        :key="category.id"
                         :id="'select' + category.id"
                     >
                         <input

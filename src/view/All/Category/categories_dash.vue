@@ -20,9 +20,8 @@
                                 <th class="id">Id</th>
                                 <th class="img">Image</th>
                                 <th class="name">Name</th>
-                                <th>Section</th>
+                              <th>Section</th>
                                 <th class="status">Status</th>
-                              <th class="section">Section</th>
                                 <th class="edit">Action</th>
                             </tr>
                         </thead>
@@ -30,7 +29,7 @@
                             <tr
                                 class="text-center"
                                 v-for="items in Categories"
-                                :key="items"
+                                :key="items.id"
                             >
                                 <td>
                                     <input
@@ -48,15 +47,12 @@
                                 <td>
                                     <i
                                         v-if="
-                                            (items.is_active == 'Active') | '0'
-                                        "
+                                        (items.is_active == 'Active')
+                                      "
                                         class="fa fa-check"
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
                                 </td>
-                              <td>
-                                {{ items.section_id }}
-                              </td>
                                 <td class="Action">
                                     <router-link
                                         :to="{
@@ -69,7 +65,7 @@
                                     <router-link
                                         :to="{
                                             name: 'categoryEdit',
-                                            params: { id: items.id },
+                                           params: { id: items.id },
                                         }"
                                         class="text-success mr-4"
                                         @click="showEditModal = true"
