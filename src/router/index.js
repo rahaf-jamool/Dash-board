@@ -8,24 +8,26 @@ const routes = [
     /* dashboard */
     {
         path: '/admin',
-        name: 'Adminbody',
+        name: 'admin',
         component: () => import('../components/body'),
     },
     {
-        path: '/admin/product_dash',
+        path: '/admin/products',
         name: 'product_dash',
         component: () => import('../view/All/Product/product_dash.vue'),
     },
     ////category dashboard////
     {
-        path: '/admin/categories_dash',
+        path: '/admin/categories',
         name: 'categories_dash',
         component: () => import('../view/All/Category/categories_dash.vue'),
+        params: true,
     },
     {
         path: '/newCategory',
         name: 'addnewcategory',
         component: () => import('../view/All/Category/addNewCategory'),
+        params: true,
     },
     {
         path: '/categoryview/:id',
@@ -37,10 +39,11 @@ const routes = [
         path: '/categoryEdit/:id',
         name: 'categoryEdit',
         component: () => import('../view/All/Category/categoryEdit'),
+        params: true,
     },
     //
     {
-        path: '/admin/brand_dash',
+        path: '/admin/brands',
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
     },

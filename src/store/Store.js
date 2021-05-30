@@ -19,6 +19,8 @@ export default new Vuex.Store({
         Section:[],
         SectionID:null,
         priceArray: [],
+        sections: [],
+        SectionID: null,
     },
     mutations: {
         SET_Stores(state, Stores) {
@@ -46,8 +48,13 @@ export default new Vuex.Store({
             let Categories = state.Categories.filter((v) => v.id != itemsId);
             state.Categories = Categories;
         },
+<<<<<<< HEAD
         SET_Sections(state, Section) {
             state.Section = Section;
+=======
+        SET_Sections(state, sections) {
+            state.sections = sections;
+>>>>>>> a33c90ee5f0f065f4fa4b9530a537a4db28de2c7
         },
         SET_SectionID(state, SectionID) {
             state.SectionID = SectionID;
@@ -144,6 +151,7 @@ export default new Vuex.Store({
                 commit('Delete_Category', items.id)
             );
         },
+<<<<<<< HEAD
         loadSection({ commit }, SectionID) {
             axios
                 .get(`/api/sections/getById/${SectionID}?lang=${lang}`)
@@ -151,11 +159,21 @@ export default new Vuex.Store({
                     console.warn('SectionID :', res.data);
                     let SectionID = res.data;
                     commit('SET_SectionID', SectionID);
+=======
+        loadSections({ commit }) {
+            axios
+                .get(`/api/sections/getAll?lang=${lang}`)
+                .then((res) => {
+                    console.warn('Sections :', res.data.Section);
+                    let sections = res.data.Section;
+                    commit('SET_Sections', sections);
+>>>>>>> a33c90ee5f0f065f4fa4b9530a537a4db28de2c7
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
         },
+<<<<<<< HEAD
         loadSections({ commit }) {
             axios
                 .get(`/api/Section/getAll?lang=${lang}`)
@@ -163,11 +181,24 @@ export default new Vuex.Store({
                     console.warn('Sections :', res.data.Section);
                     let Section = res.data.Section;
                     commit('SET_Sections', Section);
+=======
+        loadSection({ commit }, SectionID) {
+            axios
+                .get(`/api/sections/getById/${SectionID}?lang=${lang}`)
+                .then((res) => {
+                    console.warn('SectionID :', res.data);
+                    let SectionID = res.data;
+                    commit('SET_SectionID', SectionID);
+>>>>>>> a33c90ee5f0f065f4fa4b9530a537a4db28de2c7
                 })
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
+<<<<<<< HEAD
         }
+=======
+        },
+>>>>>>> a33c90ee5f0f065f4fa4b9530a537a4db28de2c7
     },
     getters: {
         avalibleStore: (state) => {
