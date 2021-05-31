@@ -148,35 +148,20 @@
             </div>
             <div>
                 <div class="a1">PARENT CATEGORIES</div>
-                <div class="form-check containd_Categorires dropdown">
+                <div class="form-check containd_Categorires">
                     <label
-                        class="form-check-label a dropbtn"
+                        class="form-check-label a"
                         v-for="category in Categories"
                         :key="category.id"
                         :id="'select' + category.id"
-                        for="sub_category"
-                        @click="myFunction()"
                     >
                         <input
                             type="radio"
-                            class="form-check-input dropbtn"
+                            class="form-check-input"
                             name="choice1"
                             v-model="categories.parent_id"
                             :value="category.id"
-                            @click="sendAdvert(category.id), myFunction()"
                         />{{ category.name }}
-                        <select
-                            id="sub_category"
-                            v-model="categories.parent_id"
-                            class="form-control"
-                        ></select>
-                        <!-- <div v-else>null</div> -->
-                        <!-- <i class="fa fa-caret-down"></i>
-                        <div id="myDropdown" class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div> -->
                     </label>
                 </div>
             </div>
@@ -189,18 +174,17 @@ import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
     name: 'categoryEdit',
-    props: ['id'],
     data() {
         return {
             categories: {
                 category: [
                     {
-                        name: 'njknj',
+                        name: 'jhjjhjh',
                         local: 'en',
                         language_id: 1,
                     },
                     {
-                        name: 'ljlkjlkj',
+                        name: ',ljlkjlkj',
                         local: 'fr',
                         language_id: 1,
                     },
@@ -211,12 +195,13 @@ export default {
                     },
                 ],
                 is_active: 1,
+                slug: 'jnjkbnjkbjk',
                 parent_id: null,
                 image: null,
                 lang_id: 1,
                 section_id: null,
-                created_at: 1,
-                updated_at: 1,
+                created_at: null,
+                updated_at: null,
             },
         };
     },
@@ -250,11 +235,9 @@ export default {
         allowDrop(ev) {
             ev.preventDefault();
         },
-
         drag(ev) {
             ev.dataTransfer.setData('text', ev.target.id);
         },
-
         drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData('text');
@@ -271,34 +254,6 @@ export default {
                 };
             }
         },
-        // myFunction(event) {
-        //     document.getElementById('myDropdown').classList.toggle('show');
-        //     if (!event.target.matches('.dropbtn')) {
-        //         var dropdowns = document.getElementsByClassName(
-        //             'dropdown-content'
-        //         );
-        //         var i;
-        //         for (i = 0; i < dropdowns.length; i++) {
-        //             var openDropdown = dropdowns[i];
-        //             if (openDropdown.classList.contains('show')) {
-        //                 openDropdown.classList.remove('show');
-        //             }
-        //         }
-        //     }
-        // },
-        // Close the dropdown menu if the user clicks outside of it
-        // window.onclick = function(event) {
-        //   if (!event.target.matches('.dropbtn')) {
-        //     var dropdowns = document.getElementsByClassName("dropdown-content");
-        //     var i;
-        //     for (i = 0; i < dropdowns.length; i++) {
-        //       var openDropdown = dropdowns[i];
-        //       if (openDropdown.classList.contains('show')) {
-        //         openDropdown.classList.remove('show');
-        //       }
-        //     }
-        //   }
-        // },
     },
 };
 </script>

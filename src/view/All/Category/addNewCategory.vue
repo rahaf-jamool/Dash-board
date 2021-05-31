@@ -38,23 +38,13 @@
                                             required
                                         />
                                     </div>
-                                    <div class="form-group d-flex">
-                                        Section<label
+                                    <div class="form-group">
+                                        <label
                                             ><input
                                                 id="choiceLabel"
                                                 type="label"
                                                 class="form-control form-control-lg"
                                                 v-model="categories.section_id"
-                                                required
-                                        /></label>
-                                    </div>
-                                    <div class="form-group d-flex">
-                                        Parent Category<label
-                                            ><input
-                                                id="parent"
-                                                type="label"
-                                                class="form-control form-control-lg"
-                                                v-model="categories.parent_id"
                                                 required
                                         /></label>
                                     </div>
@@ -146,9 +136,9 @@
             </div>
         </div>
         <div class="sidenav col-3">
-            <div class="mb-4">
+            <div>
                 <div class="a">Section</div>
-                <div class="form-check containd_Categorires">
+                <div class="form-check">
                     <label
                         class="form-check-label a"
                         v-for="item in sections"
@@ -165,49 +155,25 @@
                     </label>
                 </div>
             </div>
-            <div>
-                <div class="a1">PARENT CATEGORIES</div>
-                <!-- <div class="form-check containd_Categorires">
-                    <label
-                        class="form-check-label a"
-                        v-for="category in Categories"
-                        :key="category.id"
-                        :id="'select' + category.id"
-                        for="sub_category"
-                    >
-                        <input
-                            type="radio"
-                            class="form-check-input"
-                            name="choice1"
-                            v-model="categories.parent_id"
-                            :value="category.id"
-                        />{{ category.name }} -->
-                <!-- <select
-                            id="sub_category"
-                            v-if="category.id == categories.parent_id"
-                            v-model="parent_id"
-                            class="form-control"
-                        ></select>
-                        <div v-else>null</div> -->
-                <!-- </label> -->
-                <!-- </div> -->
-
-                <div class="customer-select sel4">
-                    <select v-model="select" @change="handleChange($event)">
-                        <option
-                            v-for="category in Categories"
-                            :key="category.id"
-                            :value="category.id"
-                        >
-                            <label
-                                ><input v-model="categories.parent_id" />{{
-                                    category.name
-                                }}</label
-                            >
-                        </option>
-                    </select>
-                </div>
-            </div>
+            <!--            <div>-->
+            <!--              <div class="a1">PARENT CATEGORIES</div>-->
+            <!--              <div class="form-check containd_Categorires">-->
+            <!--                <label-->
+            <!--                    class="form-check-label a"-->
+            <!--                    v-for="category in Categories"-->
+            <!--                    :key="category.id"-->
+            <!--                    :id="'select' + category.id"-->
+            <!--                >-->
+            <!--                  <input-->
+            <!--                      type="radio"-->
+            <!--                      class="form-check-input"-->
+            <!--                      name="choice1"-->
+            <!--                      v-model="Categories.parent_id"-->
+            <!--                      :value="category.id"-->
+            <!--                  />{{ category.name }}-->
+            <!--                </label>-->
+            <!--              </div>-->
+            <!--            </div>-->
         </div>
     </div>
 </template>
@@ -240,8 +206,9 @@ export default {
                         language_id: 1,
                     },
                 ],
+                slug: 'hbhjb',
                 is_active: 1,
-                parent_id: null,
+                parent_id: 3,
                 image: null,
                 lang_id: 1,
                 section_id: null,
@@ -254,12 +221,11 @@ export default {
         postCategory() {
             axios.post(
                 'http://edalili.e-dalely.com/public/api/categories/create',
-                this.Categories
+                this.categories
             );
             if (
                 this.categories.category[2].name == null ||
                 this.categories.section_id == null ||
-                    this.categories.parent_id ==null ||
                 this.categories.image == null
             ) {
                 document.getElementById('alert').classList.add('block');
@@ -273,11 +239,9 @@ export default {
         allowDrop(ev) {
             ev.preventDefault();
         },
-
         drag(ev) {
             ev.dataTransfer.setData('text', ev.target.id);
         },
-
         drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData('text');
@@ -296,25 +260,22 @@ export default {
         },
         handleChange(event) {
             localStorage.setItem('select', event.target.value);
-            // localStorage.getItem('select',)
-            // document.getElementById('parent').value = localStorage.getItem(
-            //     'select'
-            // );
+            localStorage.getItem('select');
+            document.getElementById('parent').value = localStorage.getItem(
+                'select'
+            );
             this.categories.parent_id = localStorage.getItem('select');
-
-            // window.location.reload();
         },
     },
     computed: {
-        ...mapState(['sections', 'Categories']),
+        ...mapState(['sections']),
     },
     mounted() {
         this.$store.dispatch('loadSections');
-        this.$store.dispatch('loadCategories');
-        // this.$store.dispatch('loadCategory', this.$route.params.id);
     },
 };
 </script>
+
 <style scoped>
 img {
     width: 50px;
@@ -338,7 +299,6 @@ img {
     overflow-x: hidden;
     padding-top: 20px;
 }
-
 /* Style the sidenav links and the dropdown button */
 .sidenav .a {
     padding: 6px 8px 6px 16px;
@@ -353,7 +313,6 @@ img {
     cursor: pointer;
     outline: none;
 }
-
 /* On mouse-over */
 .sidenav .a:hover {
     color: #f1f1f1;
@@ -375,42 +334,110 @@ img {
     display: block;
 }
 .containd_Categorires {
-    height: 200px;
+    height: 130px;
     overflow-y: scroll;
 }
-.customer-select {
-    display: inline-flex;
-    border: none;
-    background-color: #878080;
-    width: 110px;
-    border-radius: 15px;
-    position: relative;
-}
-.customer-select select {
-    border: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    background-color: transparent;
-    color: #000;
-    padding: 0;
-    z-index: 2;
-    font-size: 16px;
-    position: relative;
-    height: 35px;
-    line-height: 2.15;
-}
-.sel4:after {
-    position: absolute;
-    content: '>';
-    top: 4px;
-    left: 14px;
-    background-color: transparent;
-    color: #fff;
-    transform: rotate(90deg);
-    font-size: 17px;
-    z-index: 1;
-    font-size: 20px;
-}
 </style>
+<!--<script>-->
+<!--import axios from 'axios';-->
+<!--import { mapState } from 'vuex';-->
+<!--export default {-->
+<!--    name: 'addnewcategory',-->
+<!--    data() {-->
+<!--        const select = localStorage.getItem('select') || '0';-->
+<!--        return {-->
+<!--            select: select,-->
+<!--            // showAddModal: false,-->
+<!--            categories: {-->
+<!--                category: [-->
+<!--                    {-->
+<!--                        name: 'gvhghv',-->
+<!--                        local: 'en',-->
+<!--                        language_id: 1,-->
+<!--                    },-->
+<!--                    {-->
+<!--                        name: 'vghvhh',-->
+<!--                        local: 'fr',-->
+<!--                        language_id: 1,-->
+<!--                    },-->
+<!--                    {-->
+<!--                        name: null,-->
+<!--                        local: 'ar',-->
+<!--                        language_id: 1,-->
+<!--                    },-->
+<!--                ],-->
+<!--                is_active: 1,-->
+<!--                parent_id: null,-->
+<!--                image: null,-->
+<!--                lang_id: 1,-->
+<!--                section_id: null,-->
+<!--                created_at: 1,-->
+<!--                updated_at: 1,-->
+<!--            },-->
+<!--        };-->
+<!--    },-->
+<!--    methods: {-->
+<!--        postCategory() {-->
+<!--            axios.post(-->
+<!--                'http://edalili.e-dalely.com/public/api/categories/create',-->
+<!--                this.Categories-->
+<!--            );-->
+<!--            if (-->
+<!--                this.categories.category[2].name == null ||-->
+<!--                this.categories.section_id == null ||-->
+<!--                    this.categories.parent_id ==null ||-->
+<!--                this.categories.image == null-->
+<!--            ) {-->
+<!--                document.getElementById('alert').classList.add('block');-->
+<!--            } else {-->
+<!--                document.getElementById('alert').classList.remove('block');-->
+<!--                document.getElementById('alertt').classList.add('block');-->
+<!--                console.log(JSON.stringify(this.categories));-->
+<!--                this.$router.push({ name: 'categories_dash' });-->
+<!--            }-->
+<!--        },-->
+<!--        allowDrop(ev) {-->
+<!--            ev.preventDefault();-->
+<!--        },-->
+
+<!--        drag(ev) {-->
+<!--            ev.dataTransfer.setData('text', ev.target.id);-->
+<!--        },-->
+
+<!--        drop(ev) {-->
+<!--            ev.preventDefault();-->
+<!--            var data = ev.dataTransfer.getData('text');-->
+<!--            ev.target.appendChild(document.getElementById(data));-->
+<!--        },-->
+<!--        choiceradio() {-->
+<!--            var radios = document.getElementsByName('choice');-->
+<!--            console.log(radios);-->
+<!--            for (var i = 0; i < radios.length; i++) {-->
+<!--                radios[i].onclick = function () {-->
+<!--                    document.getElementById(-->
+<!--                        'choiceLabel'-->
+<!--                    ).innerText = this.value;-->
+<!--                };-->
+<!--            }-->
+<!--        },-->
+<!--        handleChange(event) {-->
+<!--            localStorage.setItem('select', event.target.value);-->
+<!--            // localStorage.getItem('select',)-->
+<!--            // document.getElementById('parent').value = localStorage.getItem(-->
+<!--            //     'select'-->
+<!--            // );-->
+<!--            this.categories.parent_id = localStorage.getItem('select');-->
+
+<!--            // window.location.reload();-->
+<!--        },-->
+<!--    },-->
+<!--    computed: {-->
+<!--        ...mapState(['sections', 'Categories']),-->
+<!--    },-->
+<!--    mounted() {-->
+<!--        this.$store.dispatch('loadSections');-->
+<!--        this.$store.dispatch('loadCategories');-->
+<!--        // this.$store.dispatch('loadCategory', this.$route.params.id);-->
+<!--    },-->
+<!--};-->
+<!--</script>-->
