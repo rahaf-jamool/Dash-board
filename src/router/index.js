@@ -41,12 +41,28 @@ const routes = [
         component: () => import('../view/All/Category/categoryEdit'),
         params: true,
     },
-    //
+    //brand
     {
         path: '/admin/brands',
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
     },
+    {
+        path: '/brandnew',
+        name: 'brand_add',
+        component: () => import('../view/All/Brand/brandAddnew'),
+    },
+    {
+        path: '/brandview',
+        name: 'brand_view',
+        component: () => import('../view/All/Brand/brandview'),
+    },
+    {
+        path: '/brandedit',
+        name: 'brand_edit',
+        component: () => import('../view/All/Brand/brandedit'),
+    },
+    //
     {
         path: '/new_product',
         name: 'new_product',
