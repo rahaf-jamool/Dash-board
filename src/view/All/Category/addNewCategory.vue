@@ -257,15 +257,16 @@ export default {
                 this.Categories
             );
             if (
-                this.Categories.category[2].name == null ||
-                this.Categories.section_id == null ||
-                this.Categories.image == null
+                this.categories.category[2].name == null ||
+                this.categories.section_id == null ||
+                    this.categories.parent_id ==null ||
+                this.categories.image == null
             ) {
                 document.getElementById('alert').classList.add('block');
             } else {
                 document.getElementById('alert').classList.remove('block');
                 document.getElementById('alertt').classList.add('block');
-                console.log(JSON.stringify(this.Categories));
+                console.log(JSON.stringify(this.categories));
                 this.$router.push({ name: 'categories_dash' });
             }
         },
