@@ -166,23 +166,6 @@
             </div>
             <div>
                 <div class="a1">PARENT CATEGORIES</div>
-                <!-- <div class="form-check containd_Categorires">
-                    <label
-                        class="form-check-label a"
-                        v-for="category in Categories"
-                        :key="category.id"
-                        :id="'select' + category.id"
-                    >
-                        <input
-                            type="radio"
-                            class="form-check-input"
-                            name="choice1"
-                            v-model="categories.parent_id"
-                            :value="category.id"
-                        />{{ category.name }}
-                    </label>
-                </div> -->
-
                 <div class="customer-select sel4">
                     <select v-model="categories.parent_id">
                         <option
@@ -205,11 +188,7 @@ import { mapState } from 'vuex';
 export default {
     name: 'addnewcategory',
     data() {
-        // const selected = localStorage.getItem('selected') || '0';
         return {
-            // selected: 'selected',
-            // selected: selected,
-            // showAddModal: false,
             categories: {
                 category: [
                     {
@@ -248,7 +227,8 @@ export default {
             if (
                 this.categories.category[2].name == null ||
                 this.categories.section_id == null ||
-                this.categories.image == null
+                this.categories.image == null ||
+                this.categories.parent_id == null
             ) {
                 document.getElementById('alert').classList.add('block');
             } else {

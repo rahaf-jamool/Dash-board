@@ -148,21 +148,16 @@
             </div>
             <div>
                 <div class="a1">PARENT CATEGORIES</div>
-                <div class="form-check containd_Categorires">
-                    <label
-                        class="form-check-label a"
-                        v-for="category in Categories"
-                        :key="category.id"
-                        :id="'select' + category.id"
-                    >
-                        <input
-                            type="radio"
-                            class="form-check-input"
-                            name="choice1"
-                            v-model="categories.parent_id"
+                <div class="customer-select sel4">
+                    <select v-model="categories.parent_id">
+                        <option
+                            v-for="category in Categories"
+                            :key="category.id"
                             :value="category.id"
-                        />{{ category.name }}
-                    </label>
+                        >
+                            {{ category.name }}
+                        </option>
+                    </select>
                 </div>
             </div>
         </div>
