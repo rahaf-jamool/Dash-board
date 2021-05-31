@@ -166,7 +166,7 @@
             </div>
             <div>
                 <div class="a1">PARENT CATEGORIES</div>
-                <div class="form-check containd_Categorires">
+                <!-- <div class="form-check containd_Categorires">
                     <label
                         class="form-check-label a"
                         v-for="category in Categories"
@@ -181,24 +181,20 @@
                             :value="category.id"
                         />{{ category.name }}
                     </label>
-                </div>
-            </div>
+                </div> -->
 
-            <!-- <div class="customer-select sel4">
-                    <select v-model="select" @change="handleChange($event)">
+                <div class="customer-select sel4">
+                    <select v-model="categories.parent_id">
                         <option
                             v-for="category in Categories"
                             :key="category.id"
                             :value="category.id"
                         >
-                            <label
-                                ><input v-model="categories.parent_id" />{{
-                                    category.name
-                                }}</label
-                            >
+                            {{ category.name }}
                         </option>
                     </select>
-                </div> -->
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -209,9 +205,10 @@ import { mapState } from 'vuex';
 export default {
     name: 'addnewcategory',
     data() {
-        const select = localStorage.getItem('select') || '0';
+        // const selected = localStorage.getItem('selected') || '0';
         return {
-            select: select,
+            // selected: 'selected',
+            // selected: selected,
             // showAddModal: false,
             categories: {
                 category: [
@@ -283,14 +280,14 @@ export default {
                 };
             }
         },
-        handleChange(event) {
-            localStorage.setItem('select', event.target.value);
-            localStorage.getItem('select');
-            document.getElementById('parent').value = localStorage.getItem(
-                'select'
-            );
-            this.categories.parent_id = localStorage.getItem('select');
-        },
+        // handleChange(event) {
+        //     localStorage.setItem('selected', event.target.value);
+        //     localStorage.getItem('selected');
+        //     document.getElementById('parent').value = localStorage.getItem(
+        //         'selected'
+        //     );
+        //     this.categories.parent_id = localStorage.getItem('selected');
+        // },
     },
     computed: {
         ...mapState(['sections', 'Categories']),
