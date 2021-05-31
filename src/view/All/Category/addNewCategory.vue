@@ -33,7 +33,7 @@
                                             class="form-control form-control-lg"
                                             placeholder="Name"
                                             v-model="
-                                                Categories.category[2].name
+                                                categories.category[2].name
                                             "
                                             required
                                         />
@@ -44,7 +44,7 @@
                                                 id="choiceLabel"
                                                 type="label"
                                                 class="form-control form-control-lg"
-                                                v-model="Categories.section_id"
+                                                v-model="categories.section_id"
                                                 required
                                         /></label>
                                     </div>
@@ -56,7 +56,7 @@
                                             type="text"
                                             class="form-control form-control-lg div1"
                                             placeholder="ImageURL"
-                                            v-model="Categories.image"
+                                            v-model="categories.image"
                                             required
                                         />
                                     </div>
@@ -122,12 +122,12 @@
                 <div class="col-3 card ml-5" style="max-width: 540px">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img :src="Categories.image" class="card-img" />
+                            <img :src="categories.image" class="card-img" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    {{ Categories.category[2].name }}
+                                    {{ categories.category[2].name }}
                                 </h5>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             type="radio"
                             class="form-check-input"
                             name="choice"
-                            v-model="Categories.section_id"
+                            v-model="categories.section_id"
                             :value="item.id"
                             @click="choiceradio()"
                         />{{ item.name }}
@@ -178,102 +178,104 @@
     </div>
 </template>
 
-<!--<script>-->
-<!--import axios from 'axios';-->
-<!--import { mapState } from 'vuex';-->
-<!--export default {-->
-<!--    name: 'addnewcategory',-->
-<!--    data() {-->
-<!--        const select = localStorage.getItem('select') || '0';-->
-<!--        return {-->
-<!--            select: select,-->
-<!--            // showAddModal: false,-->
-<!--            Categories: {-->
-<!--                category: [-->
-<!--                    {-->
-<!--                        name: 'gvhghv',-->
-<!--                        local: 'en',-->
-<!--                        language_id: 1,-->
-<!--                    },-->
-<!--                    {-->
-<!--                        name: 'vghvhh',-->
-<!--                        local: 'fr',-->
-<!--                        language_id: 1,-->
-<!--                    },-->
-<!--                    {-->
-<!--                        name: null,-->
-<!--                        local: 'ar',-->
-<!--                        language_id: 1,-->
-<!--                    },-->
-<!--                ],-->
-<!--                is_active: 1,-->
-<!--                parent_id: 3,-->
-<!--                image: null,-->
-<!--                lang_id: 1,-->
-<!--                section_id: null,-->
-<!--                created_at: 1,-->
-<!--                updated_at: 1,-->
-<!--            },-->
-<!--        };-->
-<!--    },-->
-<!--    methods: {-->
-<!--        postCategory() {-->
-<!--            axios.post(-->
-<!--                'http://edalili.e-dalely.com/public/api/categories/create',-->
-<!--                this.Categories-->
-<!--            );-->
-<!--            if (-->
-<!--                this.Categories.category[2].name == null ||-->
-<!--                this.Categories.section_id == null ||-->
-<!--                this.Categories.image == null-->
-<!--            ) {-->
-<!--                document.getElementById('alert').classList.add('block');-->
-<!--            } else {-->
-<!--                document.getElementById('alert').classList.remove('block');-->
-<!--                document.getElementById('alertt').classList.add('block');-->
-<!--                console.log(JSON.stringify(this.Categories));-->
-<!--                this.$router.push({ name: 'categories_dash' });-->
-<!--            }-->
-<!--        },-->
-<!--        allowDrop(ev) {-->
-<!--            ev.preventDefault();-->
-<!--        },-->
-<!--        drag(ev) {-->
-<!--            ev.dataTransfer.setData('text', ev.target.id);-->
-<!--        },-->
-<!--        drop(ev) {-->
-<!--            ev.preventDefault();-->
-<!--            var data = ev.dataTransfer.getData('text');-->
-<!--            ev.target.appendChild(document.getElementById(data));-->
-<!--        },-->
-<!--        choiceradio() {-->
-<!--            var radios = document.getElementsByName('choice');-->
-<!--            console.log(radios);-->
-<!--            for (var i = 0; i < radios.length; i++) {-->
-<!--                radios[i].onclick = function () {-->
-<!--                    document.getElementById(-->
-<!--                        'choiceLabel'-->
-<!--                    ).innerText = this.value;-->
-<!--                };-->
-<!--            }-->
-<!--        },-->
-<!--        handleChange(event) {-->
-<!--            localStorage.setItem('select', event.target.value);-->
-<!--            localStorage.getItem('select');-->
-<!--            document.getElementById('parent').value = localStorage.getItem(-->
-<!--                'select'-->
-<!--            );-->
-<!--            this.categories.parent_id = localStorage.getItem('select');-->
-<!--        },-->
-<!--    },-->
-<!--    computed: {-->
-<!--        ...mapState(['sections']),-->
-<!--    },-->
-<!--    mounted() {-->
-<!--        this.$store.dispatch('loadSections');-->
-<!--    },-->
-<!--};-->
-<!--</script>-->
+<script>
+import axios from 'axios';
+import { mapState } from 'vuex';
+export default {
+    name: 'addnewcategory',
+    data() {
+        const select = localStorage.getItem('select') || '0';
+        return {
+            select: select,
+            // showAddModal: false,
+            categories: {
+                category: [
+                    {
+                        name: 'gvhghv',
+                        local: 'en',
+                        language_id: 1,
+                    },
+                    {
+                        name: 'vghvhh',
+                        local: 'fr',
+                        language_id: 1,
+                    },
+                    {
+                        name: null,
+                        local: 'ar',
+                        language_id: 1,
+                    },
+                ],
+                slug: 'hbhjb',
+                is_active: 1,
+                parent_id: 3,
+                image: null,
+                lang_id: 1,
+                section_id: null,
+                created_at: 1,
+                updated_at: 1,
+            },
+        };
+    },
+    methods: {
+        postCategory() {
+            axios.post(
+                'http://edalili.e-dalely.com/public/api/categories/create',
+                this.categories
+            );
+            if (
+                this.categories.category[2].name == null ||
+                this.categories.section_id == null ||
+                this.categories.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alert').classList.remove('block');
+                document.getElementById('alertt').classList.add('block');
+                console.log(JSON.stringify(this.categories));
+                this.$router.push({ name: 'categories_dash' });
+            }
+        },
+        allowDrop(ev) {
+            ev.preventDefault();
+        },
+        drag(ev) {
+            ev.dataTransfer.setData('text', ev.target.id);
+        },
+        drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData('text');
+            ev.target.appendChild(document.getElementById(data));
+        },
+        choiceradio() {
+            var radios = document.getElementsByName('choice');
+            console.log(radios);
+            for (var i = 0; i < radios.length; i++) {
+                radios[i].onclick = function () {
+                    document.getElementById(
+                        'choiceLabel'
+                    ).innerText = this.value;
+                };
+            }
+        },
+        handleChange(event) {
+            localStorage.setItem('select', event.target.value);
+            localStorage.getItem('select');
+            document.getElementById('parent').value = localStorage.getItem(
+                'select'
+            );
+            this.categories.parent_id = localStorage.getItem('select');
+        },
+    },
+    computed: {
+        ...mapState(['sections']),
+    },
+    mounted() {
+        this.$store.dispatch('loadSections');
+    },
+};
+</script>
+
 <style scoped>
 img {
     width: 50px;
