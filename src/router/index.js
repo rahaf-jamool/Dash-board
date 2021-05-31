@@ -11,11 +11,6 @@ const routes = [
         name: 'admin',
         component: () => import('../components/body'),
     },
-    {
-        path: '/admin/products',
-        name: 'product_dash',
-        component: () => import('../view/All/Product/product_dash.vue'),
-    },
     ////category dashboard////
     {
         path: '/admin/categories',
@@ -41,11 +36,17 @@ const routes = [
         component: () => import('../view/All/Category/categoryEdit'),
         params: true,
     },
-    //
+ 
     {
         path: '/admin/brands',
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
+    },
+       ////Product dashboard////
+    {
+        path: '/admin/products',
+        name: 'product_dash',
+        component: () => import('../view/All/Product/product_dash.vue'),
     },
     {
         path: '/new_product',
@@ -57,6 +58,12 @@ const routes = [
         name: 'edit_product',
         component: () => import('../view/All/Product/edit_product'),
     },
+      ////custom dashboard////
+    {
+        path: '/admin/custom',
+        name: 'custom_dash',
+        component: () => import('../view/All/Custom field/custom_dash'),
+    }
 ];
 
 const router = new VueRouter({

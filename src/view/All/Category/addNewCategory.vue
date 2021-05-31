@@ -165,7 +165,7 @@
                 </div>
             </div>
             <div>
-                <div class="a1">PARENT CATEGORIES</div>
+                <!-- <div class="a1">PARENT CATEGORIES</div> 
                 <div class="form-check containd_Categorires">
                     <label
                         class="form-check-label a"
@@ -181,24 +181,20 @@
                             :value="category.id"
                         />{{ category.name }}
                     </label>
-                </div>
+                </div>-->
             </div>
 
-            <!-- <div class="customer-select sel4">
-                    <select v-model="select" @change="handleChange($event)">
+             <div class="customer-select sel4">
+                    <select v-model="selected">
                         <option
                             v-for="category in Categories"
                             :key="category.id"
                             :value="category.id"
                         >
-                            <label
-                                ><input v-model="categories.parent_id" />{{
-                                    category.name
-                                }}</label
-                            >
+                            
                         </option>
                     </select>
-                </div> -->
+                </div> 
         </div>
     </div>
 </template>
@@ -211,7 +207,7 @@ export default {
     data() {
         const select = localStorage.getItem('select') || '0';
         return {
-            select: select,
+            selected: '',
             // showAddModal: false,
             categories: {
                 category: [
@@ -233,7 +229,7 @@ export default {
                 ],
                 slug: 'hbhjb',
                 is_active: 1,
-                parent_id: null,
+                parent_id: selected,
                 image: null,
                 lang_id: 1,
                 section_id: null,
