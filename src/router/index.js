@@ -53,14 +53,16 @@ const routes = [
         component: () => import('../view/All/Brand/brandAddnew'),
     },
     {
-        path: '/brandview',
+        path: '/brandview/:id',
         name: 'brand_view',
         component: () => import('../view/All/Brand/brandview'),
+        params: true,
     },
     {
-        path: '/brandedit',
+        path: '/brandedit/:id',
         name: 'brand_edit',
         component: () => import('../view/All/Brand/brandedit'),
+        params: true,
     },
     //
     {

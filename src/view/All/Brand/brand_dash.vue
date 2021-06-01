@@ -46,7 +46,7 @@
                                 <td>{{ items.description }}</td>
                                 <td>
                                     <i
-                                        v-if="items.is_active !== 'true'"
+                                        v-if="items.is_active == '1'"
                                         class="fa fa-check"
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
@@ -68,7 +68,9 @@
                                         class="text-success mr-4"
                                         ><i class="fa fa-edit"></i
                                     ></router-link>
-                                    <a class="text-danger"
+                                    <a
+                                        class="text-danger"
+                                        @click="delBrand(items)"
                                         ><i class="fa fa-trash-alt"></i
                                     ></a>
                                 </td>
@@ -87,6 +89,11 @@ export default {
     name: 'brand_dash',
     data() {
         return {};
+    },
+    methods: {
+        delBrand(items) {
+            this.$store.dispatch('deleteBrand', items);
+        },
     },
     computed: {
         ...mapState(['Brands']),

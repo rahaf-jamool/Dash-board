@@ -14,9 +14,10 @@ export default new Vuex.Store({
         ProductID: null,
         Brand: [],
         Brands: [],
+        BrandID: null,
         Categories: [],
         CategoryID: null,
-        SectionID:null,
+        SectionID: null,
         priceArray: [],
         sections: [],
     },
@@ -34,6 +35,13 @@ export default new Vuex.Store({
             state.ProductID = ProductID;
         },
         SET_Brands(state, Brands) {
+            state.Brands = Brands;
+        },
+        SET_BrandID(state, BrandID) {
+            state.BrandID = BrandID;
+        },
+        Delete_Brand(state, itemsId) {
+            let Brands = state.Brands.filter((v) => v.id != itemsId);
             state.Brands = Brands;
         },
         SET_Categories(state, Categories) {
@@ -114,6 +122,24 @@ export default new Vuex.Store({
                     console.log('Error: ', error);
                 });
         },
+        loadBrand({ commit }, BrandID) {
+            axios
+                .get(`/api/brands/getById/${BrandID}?lang=${lang}`)
+                .then((res) => {
+                    console.warn('BrandID :', res.data.Brand);
+                    let BrandID = res.data.Brand;
+                    commit('SET_BrandID', BrandID);
+                })
+                .catch(function (error) {
+                    console.log('Error: ', error);
+                });
+        },
+        async deleteBrand({ commit }, items) {
+            axios.put(
+                `http://edalili.e-dalely.com/public/api/brands/trash/${items.id}`,
+                commit('Delete_Brand', items.id)
+            );
+        },
         loadCategories({ commit }) {
             axios
                 .get(`/api/categories/getAll?lang=${lang}`)
@@ -167,8 +193,8 @@ export default new Vuex.Store({
                 .catch(function (error) {
                     console.log('Error: ', error);
                 });
-
-    },},
+        },
+    },
     getters: {
         avalibleStore: (state) => {
             let len = state.Product[0].store.length;
