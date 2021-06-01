@@ -48,15 +48,6 @@
                                             required
                                         />
                                     </div>
-                                    <div class="form-group d-flex">
-                                        Section<label
-                                            ><input
-                                                id="choiceLabel"
-                                                type="label"
-                                                class="form-control form-control-lg"
-                                                required
-                                        /></label>
-                                    </div>
                                     <div class="form-group">
                                         <input
                                             id="div1"
