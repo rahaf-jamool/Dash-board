@@ -63,7 +63,17 @@ const routes = [
         path: '/admin/custom',
         name: 'custom_dash',
         component: () => import('../view/All/Custom field/custom_dash'),
-    }
+    },
+    {
+        path: '/new_custom',
+        name: 'new_custom',
+        component: () => import('../view/All/Custom field/new_custom'),
+    },
+    {
+        path: '/custome_value',
+        name: 'custome_value',
+        component: () => import('../view/All/Custom field/custome_value'),
+    },
 ];
 
 const router = new VueRouter({

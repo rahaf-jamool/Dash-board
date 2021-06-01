@@ -1,11 +1,11 @@
 <template>
       <div class="parent">
-        <div class="selected">Products</div>
+        <div class="selected">Customs</div>
         <div class="New_Custom">
-            <button>New Custom</button>
+            <button @click="newCustom">New Custom</button>
         </div>
         <div class="New_Value">
-            <button >New Value</button>
+            <button @click="newValue">New Value</button>
         </div>
         <div class="contain">
             <div class="nav__Custom">
@@ -45,9 +45,16 @@ export default {
     components:{Custom},
     data() {
         return {
-         custom : json[0].Size
+         custom : json[0].Custome_field
         };
-    },
+    },methods:{
+        newCustom() {
+            this.$router.push(`/new_custom`);
+        },
+        newValue() {
+            this.$router.push(`/custome_value`);
+        },
+    }
 }
 </script>
 <style scoped>
