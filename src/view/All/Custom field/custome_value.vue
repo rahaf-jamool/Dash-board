@@ -15,30 +15,33 @@
         </div>
         </div>
         <select style="width: 150px;margin: auto;">
-            <option>Gender</option>
+            <option v-for="items in custom" :key="items.pr">{{items.name}}</option>
         </select>
         <form>
                 <input
                     type="text"
                     placeholder="value"
+                   
                 />
          </form>
+         <button class="save" @click="handleCustome">save</button>
     </div>
 </template>
 
 <script>
-
-
+import json from "../../../json/custom.json";
 export default {
     name: 'custome_value',
     components: {},
     data() {
         return {
-          
+           custom : json[0].Custome_field
         };
     },
     methods: {
-     
+           handleCustome(){
+        console.log (this.custom); 
+            }
     },
     computed: {
       
@@ -57,15 +60,6 @@ export default {
     grid-template-areas:
         'selected'
         'contain';
-}
-.parent .save {
-    background-color: #18ade8;
-    border: none;
-    padding: 10px;
-    width: 80px;
-    color: #fff;
-    margin: 20px;
-    border-radius: 10px;
 }
 .containd_Categorires{
      height: 130px;
@@ -119,5 +113,13 @@ export default {
 .closebtn:hover {
   color: black;
 }
-
+.parent .save {
+    background-color: #18ade8;
+    border: none;
+    padding: 10px;
+    width: 80px;
+    color: #fff;
+    margin: auto;
+    border-radius: 10px;
+}
 </style>

@@ -14,28 +14,35 @@
             <strong>Good</strong> "operation accomplished successfully.
         </div>
          <form>
+             
                 <input
                     type="text"
                     placeholder="name"
+                    v-model="name"
                 />
          </form>
+         <button class="save" @click="handleCustome">save</button>
         </div>
     </div>
 </template>
 
 <script>
-
-
+import json from "../../../json/custom.json";
 export default {
     name: 'new_custom',
     components: {},
     data() {
         return {
-          
+            name :null,
+            custom : json[0].Custome_field
         };
     },
     methods: {
-     
+      handleCustome(){
+          this.custom[this.custom.length] = {id: this.custom.length + 1,name: this.name}; 
+           
+        console.log (this.custom); 
+            }
     },
     computed: {
       
@@ -61,7 +68,7 @@ export default {
     padding: 10px;
     width: 80px;
     color: #fff;
-    margin: 20px;
+margin: auto;
     border-radius: 10px;
 }
 .containd_Categorires{

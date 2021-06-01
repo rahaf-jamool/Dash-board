@@ -36,7 +36,7 @@ const routes = [
         component: () => import('../view/All/Category/categoryEdit'),
         params: true,
     },
- 
+    //brand
     {
         path: '/admin/brands',
         name: 'brand_dash',
@@ -48,6 +48,24 @@ const routes = [
         name: 'product_dash',
         component: () => import('../view/All/Product/product_dash.vue'),
     },
+    {
+        path: '/brandnew',
+        name: 'brand_add',
+        component: () => import('../view/All/Brand/brandAddnew'),
+    },
+    {
+        path: '/brandview/:id',
+        name: 'brand_view',
+        component: () => import('../view/All/Brand/brandview'),
+        params: true,
+    },
+    {
+        path: '/brandedit/:id',
+        name: 'brand_edit',
+        component: () => import('../view/All/Brand/brandedit'),
+        params: true,
+    },
+    //
     {
         path: '/new_product',
         name: 'new_product',

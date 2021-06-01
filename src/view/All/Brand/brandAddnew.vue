@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-12 m-2" style="display: flex">
         <div class="col-9 ml-5">
-            <h5 class="modal-title">Add New Category</h5>
+            <h5 class="modal-title">Add New Brand</h5>
             <div class="row">
                 <div id="overlay1 mt-5 col-9">
                     <div class="modal-dialog">
@@ -32,30 +32,21 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="Name"
-                                            v-model="
-                                                categories.category[2].name
-                                            "
+                                            v-model="Brands.brands[2].name"
                                             required
                                         />
                                     </div>
-                                    <div class="form-group d-flex">
-                                        Section<label
-                                            ><input
-                                                id="choiceLabel"
-                                                type="label"
-                                                class="form-control form-control-lg"
-                                                v-model="categories.section_id"
-                                                required
-                                        /></label>
-                                    </div>
-                                    <div class="form-group d-flex">
-                                        Parent Category<label
-                                            ><input
-                                                type="label"
-                                                class="form-control form-control-lg"
-                                                v-model="categories.parent_id"
-                                                required
-                                        /></label>
+                                    <div class="form-group">
+                                        <input
+                                            id="inputdescription"
+                                            type="text"
+                                            class="form-control form-control-lg"
+                                            placeholder="Description"
+                                            v-model="
+                                                Brands.brands[2].description
+                                            "
+                                            required
+                                        />
                                     </div>
                                     <div class="form-group">
                                         <input
@@ -65,7 +56,7 @@
                                             type="text"
                                             class="form-control form-control-lg div1"
                                             placeholder="ImageURL"
-                                            v-model="categories.image"
+                                            v-model="Brands.image"
                                             required
                                         />
                                     </div>
@@ -118,9 +109,9 @@
                                     <div class="form-group">
                                         <button
                                             class="btn btn-info btn-block btn-lg"
-                                            @click="postCategory()"
+                                            @click="postBrands()"
                                         >
-                                            Add Category
+                                            Add Brand
                                         </button>
                                     </div>
                                 </div>
@@ -131,51 +122,14 @@
                 <div class="col-3 card ml-5" style="max-width: 540px">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img :src="categories.image" class="card-img" />
+                            <img class="card-img" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    {{ categories.category[2].name }}
-                                </h5>
+                                <h5 class="card-title"></h5>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="sidenav col-3">
-            <div>
-                <div class="a">Section</div>
-                <div class="form-check">
-                    <label
-                        class="form-check-label a"
-                        v-for="item in sections"
-                        :key="item.id"
-                    >
-                        <input
-                            type="radio"
-                            class="form-check-input"
-                            name="choice"
-                            v-model="categories.section_id"
-                            :value="item.id"
-                            @click="choiceradio()"
-                        />{{ item.name }}
-                    </label>
-                </div>
-            </div>
-            <div>
-                <div class="a1">PARENT CATEGORIES</div>
-                <div class="customer-select sel4">
-                    <select v-model="categories.parent_id">
-                        <option
-                            v-for="category in Categories"
-                            :key="category.id"
-                            :value="category.id"
-                        >
-                            {{ category.name }}
-                        </option>
-                    </select>
                 </div>
             </div>
         </div>
@@ -184,58 +138,57 @@
 
 <script>
 import axios from 'axios';
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
+
 export default {
-    name: 'addnewcategory',
+    name: 'brand_add',
     data() {
         return {
-            categories: {
-                category: [
+            Brands: {
+                brands: [
                     {
-                        name: 'gvhghv',
-                        local: 'en',
+                        name: 'jhjjhjh',
+                        description: 'jbjb',
+                        locale: 'en',
                         language_id: 1,
                     },
                     {
-                        name: 'vghvhh',
-                        local: 'fr',
+                        name: ',ljlkjlkj',
+                        description: 'knjlnlk',
+                        locale: 'fr',
                         language_id: 1,
                     },
                     {
                         name: null,
-                        local: 'ar',
+                        description: null,
+                        locale: 'ar',
                         language_id: 1,
                     },
                 ],
-                slug: 'hbhjb',
+                slug: 'gfvghf',
                 is_active: 1,
-                parent_id: null,
                 image: null,
                 lang_id: 1,
-                section_id: null,
-                created_at: 1,
-                updated_at: 1,
             },
         };
     },
     methods: {
-        postCategory() {
+        postBrands() {
             axios.post(
-                'http://edalili.e-dalely.com/public/api/categories/create',
-                this.categories
+                'http://edalili.e-dalely.com/public/api/brands/create',
+                this.Brands
             );
             if (
-                this.categories.category[2].name == null ||
-                this.categories.section_id == null ||
-                this.categories.image == null ||
-                this.categories.parent_id == null
+                this.Brands.brands[2].name == null ||
+                this.Brands.brands[2].description == null ||
+                this.Brands.image == null
             ) {
                 document.getElementById('alert').classList.add('block');
             } else {
                 document.getElementById('alert').classList.remove('block');
                 document.getElementById('alertt').classList.add('block');
-                console.log(JSON.stringify(this.categories));
-                this.$router.push({ name: 'categories_dash' });
+                console.log(JSON.stringify(this.Brands));
+                this.$router.push({ name: 'brand_dash' });
             }
         },
         allowDrop(ev) {
@@ -260,21 +213,6 @@ export default {
                 };
             }
         },
-        // handleChange(event) {
-        //     localStorage.setItem('selected', event.target.value);
-        //     localStorage.getItem('selected');
-        //     document.getElementById('parent').value = localStorage.getItem(
-        //         'selected'
-        //     );
-        //     this.categories.parent_id = localStorage.getItem('selected');
-        // },
-    },
-    computed: {
-        ...mapState(['sections', 'Categories']),
-    },
-    mounted() {
-        this.$store.dispatch('loadSections');
-        this.$store.dispatch('loadCategories');
     },
 };
 </script>
