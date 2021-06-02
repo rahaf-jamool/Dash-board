@@ -4,6 +4,7 @@
         <router-link to="/admin/categories" class="a"> Category </router-link>
         <router-link to="/admin/brands" class="a">Brands</router-link>
         <router-link to="" class="a">Custom field</router-link>
+        <router-link to="/admin/doctors" class="a">Doctor</router-link>
     </div>
 </template>
 
