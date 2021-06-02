@@ -143,9 +143,9 @@
 export default {
     name: 'editDoctor',
     methods: {
-        // postBrands() {
-        //   axios.post(
-        //       'http://edalili.e-dalely.com/public/api/brands/create',
+        // putDoctor() {
+        //   axios.put(
+        //       'http://edalili.e-dalely.com/public/api/doctor/update/',
         //       this.Brands
         //   );
         //   if (

@@ -145,9 +145,9 @@
 export default {
     name: 'addNewdoctor',
     methods: {
-        // postBrands() {
+        // postDoctor() {
         //   axios.post(
-        //       'http://edalili.e-dalely.com/public/api/brands/create',
+        //       'http://edalili.e-dalely.com/public/api/doctor/create',
         //       this.Brands
         //   );
         //   if (
@@ -160,7 +160,7 @@ export default {
         //     document.getElementById('alert').classList.remove('block');
         //     document.getElementById('alertt').classList.add('block');
         //     console.log(JSON.stringify(this.Brands));
-        //     this.$router.push({ name: 'brand_dash' });
+        //     this.$router.push({ name: 'doctor_dash' });
         //   }
         // },
         allowDrop(ev) {
