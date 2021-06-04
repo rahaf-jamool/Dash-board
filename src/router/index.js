@@ -11,11 +11,6 @@ const routes = [
         name: 'admin',
         component: () => import('../components/body'),
     },
-    {
-        path: '/admin/products',
-        name: 'product_dash',
-        component: () => import('../view/All/Product/product_dash.vue'),
-    },
     ////category dashboard////
     {
         path: '/admin/categories',
@@ -41,7 +36,7 @@ const routes = [
         component: () => import('../view/All/Category/categoryEdit'),
         params: true,
     },
-    //brand
+    //brand dashboard//
     {
         path: '/admin/brands',
         name: 'brand_dash',
@@ -64,7 +59,12 @@ const routes = [
         component: () => import('../view/All/Brand/brandedit'),
         params: true,
     },
-    //
+    //product dashboard//
+    {
+        path: '/admin/products',
+        name: 'product_dash',
+        component: () => import('../view/All/Product/product_dash.vue'),
+    },
     {
         path: '/new_product',
         name: 'new_product',
@@ -74,6 +74,22 @@ const routes = [
         path: '/edit_product/:id',
         name: 'edit_product',
         component: () => import('../view/All/Product/edit_product'),
+    },
+    //doctor dashboard//
+    {
+        path: '/admin/doctors',
+        name: 'doctor_dash',
+        component: () => import('../view/depDoctor/doctor/doctor_dash'),
+    },
+    {
+        path: '/newdoctor',
+        name: 'addNewdoctor',
+        component: () => import('../view/depDoctor/doctor/addNewdoctor'),
+    },
+    {
+        path: '/editdoctor',
+        name: 'editDoctor',
+        component: () => import('../view/depDoctor/doctor/editDoctor'),
     },
 ];
 
