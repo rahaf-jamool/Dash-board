@@ -9,9 +9,9 @@
                 <input
                     name="checkbox"
                     type="checkbox"
-                   @click="HandelMaleGender"
+                    @click="HandelMaleGender"
                 />
-                <label >Male</label>
+                <label>Male</label>
             </div>
             <div>
                 <input
@@ -49,40 +49,47 @@
             </div>
             <hr />
             <div class="custom_Brand">Brand</div>
-                <div class="containd_Brands">
-            <div  v-for="item in Brands" :key="item.pr">
-                <input
-                    :id="`radio${item.id}`"
-                    name="radios1"
-                    type="radio"
-                    :value="item.id"
-                    v-model="products.brand_id"
-                />
-                <label :for="`radio${item.id}`">{{item.name}}</label>
-            </div>
+            <div class="containd_Brands">
+                <div v-for="item in Brands" :key="item.pr">
+                    <input
+                        :id="`radio${item.id}`"
+                        name="radios1"
+                        type="radio"
+                        :value="item.id"
+                        v-model="products.brand_id"
+                    />
+                    <label :for="`radio${item.id}`">{{ item.name }}</label>
+                </div>
             </div>
             <div class="custom_Categorires">Categorires</div>
             <div class="containd_Categorires">
-            <div  v-for="items in Categories" :key="items.pr">
-                <input
-                    :id="`radio${items.id}`"
-                    name="radios2"
-                    type="radio"
-                    :value="items.id"
-                    v-model="products.category_id"
-                  
-                />
-                <label :for="`radio${items.id}`">{{items.name}}</label>
-            </div>
+                <div v-for="items in Categories" :key="items.pr">
+                    <input
+                        :id="`radio${items.id}`"
+                        name="radios2"
+                        type="radio"
+                        :value="items.id"
+                        v-model="products.category_id"
+                    />
+                    <label :for="`radio${items.id}`">{{ items.name }}</label>
+                </div>
             </div>
         </div>
         <div class="contain">
             <div class="alert" id="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
                 <strong>Warning!</strong> You must fill in all fields.
             </div>
             <div class="alertt" id="alertt">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
                 <strong>Good</strong> "operation accomplished successfully.
             </div>
             <form>
@@ -115,15 +122,15 @@
 </template>
 
 <script>
-import UploadImages from "vue-upload-drop-images"
+import UploadImages from 'vue-upload-drop-images';
 import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
     name: 'new_product',
-    components: {UploadImages},
+    components: { UploadImages },
     data() {
         return {
-            files:[],
+            files: [],
             products: {
                 product: [
                     {
@@ -169,12 +176,7 @@ export default {
                         category_id: 3,
                     },
                 ],
-                customFeild: [
-                    {
-
-                    },
-
-                ],
+                customFeild: [{}],
                 images: [
                     {
                         product_id: 1,
@@ -183,12 +185,12 @@ export default {
                     },
                     {
                         product_id: 1,
-                       image: 'asdasd',
+                        image: 'asdasd',
                         is_cover: 0,
                     },
                     {
                         product_id: 1,
-                       image: 'asdasd',
+                        image: 'asdasd',
                         is_cover: 0,
                     },
                 ],
@@ -197,54 +199,74 @@ export default {
     },
     methods: {
         // Pushes posts to the server when called.//
-        updateProduct() {      
+        updateProduct() {
             axios.put(
                 `/api/products/update/${this.ProductID[0].id}`,
                 this.products
             );
 
-            if(this.products.product[0].name == null || this.products.product[0].short_des == null || this.products.product[0].long_des == null || this.products.image == null){
-               document.getElementById('alert').classList.add('block')  ;
-            }
-            else{
-                document.getElementById('alertt').classList.add('block')  ;
+            if (
+                this.products.product[0].name == null ||
+                this.products.product[0].short_des == null ||
+                this.products.product[0].long_des == null ||
+                this.products.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alertt').classList.add('block');
             }
             console.log(JSON.stringify(this.products));
         },
-        HandelMaleGender(){
-        this.products.customFeild[0].Gender[0] = {Male: 1,Female: 0}
+        HandelMaleGender() {
+            this.products.customFeild[0].Gender[0] = { Male: 1, Female: 0 };
         },
-        HandelFemaleGender(){
-        this.products.customFeild[0].Gender[0] = {Male: 0,Female: 1}
+        HandelFemaleGender() {
+            this.products.customFeild[0].Gender[0] = { Male: 0, Female: 1 };
         },
-        HandelLargeSize(){
-        this.products.customFeild[1].Size[0] = {Large: 1,Medium: 0,Small: 0}
+        HandelLargeSize() {
+            this.products.customFeild[1].Size[0] = {
+                Large: 1,
+                Medium: 0,
+                Small: 0,
+            };
         },
-        HandelMediumSize(){
-             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 1,Small: 0}
+        HandelMediumSize() {
+            this.products.customFeild[1].Size[0] = {
+                Large: 0,
+                Medium: 1,
+                Small: 0,
+            };
         },
-        HandelSmallSize(){
-             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 0,Small: 1}
+        HandelSmallSize() {
+            this.products.customFeild[1].Size[0] = {
+                Large: 0,
+                Medium: 0,
+                Small: 1,
+            };
         },
-        handleImages(Imgs){
-               this.products.image = "http://localhost:8080/img/"+Imgs[0].name;
-                for (var i=0;i<Imgs.length;i++) {
-                     
-            this.products.images[i] = Imgs[i].name ;
-            this.products.images[i] = {image: Imgs[i].name,product_id: this.ProductID[0].id,
-            is_cover: i === 0 ? 1 : 0
-            }; 
-                }
-                console.log (this.products.images);
-                
+        handleImages(Imgs) {
+            this.products.image = 'http://localhost:8080/img/' + Imgs[0].name;
+            for (var i = 0; i < Imgs.length; i++) {
+                this.products.images[i] = Imgs[i].name;
+                this.products.images[i] = {
+                    image: Imgs[i].name,
+                    product_id: this.ProductID[0].id,
+                    is_cover: i === 0 ? 1 : 0,
+                };
             }
+            console.log(this.products.images);
+        },
     },
     computed: {
-        ...mapState(['ProductID', 'Brands','Categories']),
+        ...mapState({
+            Categories: (state) => state.All.Categories,
+            Brands: (state) => state.All.Brands,
+            ProductID: (state) => state.All.ProductID,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadProduct', this.$route.params.id);
-        this.$store.dispatch('loadBrands'); 
+        this.$store.dispatch('loadBrands');
         this.$store.dispatch('loadCategories');
     },
 };
@@ -300,8 +322,8 @@ export default {
     text-shadow: 2px 2px 8px #f71919;
 }
 .containd_Categorires,
-.containd_Brands{
-     height: 130px;
+.containd_Brands {
+    height: 130px;
     overflow-y: scroll;
 }
 .selected {
@@ -329,47 +351,46 @@ form hr {
     margin: 0 auto;
 }
 .alert {
-  display: none;
-  padding: 80px;
-  background-color: #f44336;
-  color: white;
-  position: absolute;
-  right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
+    display: none;
+    padding: 80px;
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
 }
 .alertt {
-  display: none;
-  padding: 80px;
-  background-color: #00b618;
-  color: white;
-  position: absolute;
-   right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
-
+    display: none;
+    padding: 80px;
+    background-color: #00b618;
+    color: white;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
 }
-.block{
+.block {
     display: block;
 }
 
 .closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .closebtn:hover {
-  color: black;
+    color: black;
 }
-.upload_img{
+.upload_img {
     width: 50%;
     height: auto;
 }

@@ -96,7 +96,9 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Brands']),
+        ...mapState({
+            Brands: (state) => state.All.Brands,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadBrands');

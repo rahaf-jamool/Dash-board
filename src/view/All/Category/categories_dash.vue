@@ -20,7 +20,7 @@
                                 <th class="id">Id</th>
                                 <th class="img">Image</th>
                                 <th class="name">Name</th>
-                              <th>Section</th>
+                                <th>Section</th>
                                 <th class="status">Status</th>
                                 <th class="edit">Action</th>
                             </tr>
@@ -46,9 +46,7 @@
                                 <td>{{ items.section_id }}</td>
                                 <td>
                                     <i
-                                        v-if="
-                                        (items.is_active == 'Active')
-                                      "
+                                        v-if="items.is_active == 'Active'"
                                         class="fa fa-check"
                                     ></i>
                                     <i v-else class="fa fa-times"></i>
@@ -65,7 +63,7 @@
                                     <router-link
                                         :to="{
                                             name: 'categoryEdit',
-                                           params: { id: items.id },
+                                            params: { id: items.id },
                                         }"
                                         class="text-success mr-4"
                                         @click="showEditModal = true"
@@ -97,11 +95,14 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Categories','Section']),
+        ...mapState({
+            Categories: (state) => state.All.Categories,
+            sections: (state) => state.All.sections,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadCategories');
-      this.$store.dispatch('loadSections');
+        this.$store.dispatch('loadSections');
     },
 };
 </script>
