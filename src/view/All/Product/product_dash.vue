@@ -55,7 +55,9 @@ export default {
         },
     },
     computed: {
-        ...mapState(['Product']),
+        ...mapState({
+            Product: (state) => state.All.Product,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadProducts');

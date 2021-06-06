@@ -11,7 +11,7 @@ const routes = [
         name: 'admin',
         component: () => import('../components/body'),
     },
-    ////category dashboard////
+    ////category all dashboard////
     {
         path: '/admin/categories',
         name: 'categories_dash',
@@ -36,7 +36,7 @@ const routes = [
         component: () => import('../view/All/Category/categoryEdit'),
         params: true,
     },
-    //brand dashboard//
+    //brand all dashboard//
     {
         path: '/admin/brands',
         name: 'brand_dash',
@@ -59,7 +59,7 @@ const routes = [
         component: () => import('../view/All/Brand/brandedit'),
         params: true,
     },
-    //product dashboard//
+    //product all dashboard//
     {
         path: '/admin/products',
         name: 'product_dash',

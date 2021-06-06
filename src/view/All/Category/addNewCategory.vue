@@ -270,7 +270,10 @@ export default {
         // },
     },
     computed: {
-        ...mapState(['sections', 'Categories']),
+        ...mapState({
+            Categories: (state) => state.All.Categories,
+            sections: (state) => state.All.sections,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadSections');
