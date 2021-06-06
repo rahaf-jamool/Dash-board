@@ -1,11 +1,13 @@
 <template>
     <div class="parent">
+        <dosctors></dosctors>
         <div class="col-12">
             <div class="contain m-4 col-10">
                 <div class="container">
                     <div class="float-right row m-6">
+                        <input type="text" placeholder="Search.." />
                         <router-link to="/newdoctor"
-                            ><button class="btn btn-info float-right">
+                            ><button class="btn btn-info float-right ml-3">
                                 <i class="fa fa-plus"></i>
                                 &nbsp;&nbsp; Add New Doctor
                             </button>
@@ -27,31 +29,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
+                            <tr
+                                class="text-center"
+                                v-for="items in doctors"
+                                :key="items.id"
+                            >
                                 <td>
                                     <input
                                         style="margin: 0px 10px"
                                         type="checkbox"
                                     />
-                                    id
+                                    {{ items.id }}
                                 </td>
                                 <td>
-                                    <img />
+                                    <img v-lazy="`${items.image}`" />
                                 </td>
-                                <td>FirstName</td>
-                                <td>LastName</td>
-                                <td>description</td>
+                                <td>{{ items.first_name }}</td>
+                                <td>{{ items.last_name }}</td>
+                                <td>{{ items.description }}</td>
                                 <td>
-                                    status
-                                    <!--                                                            <i-->
-                                    <!--                                                                class="fa fa-check"-->
-                                    <!--                                                            ></i>-->
-                                    <!--                                                            <i  class="fa fa-times"></i>-->
+                                    <i
+                                        v-if="items.is_active == '1'"
+                                        class="fa fa-check"
+                                    ></i>
+                                    <i v-else class="fa fa-times"></i>
                                 </td>
                                 <td class="Action">
                                     <router-link
                                         :to="{
-                                            name: 'viewDoctor',
+                                            name: 'viewdoctor',
                                         }"
                                         class="text-info mr-4"
                                         ><i class="fa fa-eye"></i
@@ -77,8 +83,19 @@
 </template>
 
 <script>
+import Dosctors from './dosctors';
+import { mapState } from 'vuex';
 export default {
-    name: 'doctor_dash',
+    name: 'doctor',
+    components: { Dosctors },
+    computed: {
+        ...mapState({
+            doctors: (state) => state.Doctors.doctors,
+        }),
+    },
+    mounted() {
+        this.$store.dispatch('loadDoctors');
+    },
 };
 </script>
 
@@ -127,5 +144,28 @@ export default {
 .Action a {
     cursor: pointer;
     color: #fff;
+}
+input[type='text'] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
+@media screen and (max-width: 600px) {
+    input[type='text'] {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    input[type='text'] {
+        border: 1px solid #ccc;
+    }
 }
 </style>

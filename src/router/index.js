@@ -78,8 +78,18 @@ const routes = [
     //doctor dashboard//
     {
         path: '/admin/doctors',
-        name: 'doctor_dash',
+        name: 'dosctors',
+        component: () => import('../view/depDoctor/doctor/dosctors'),
+    },
+    {
+        path: '/doctores',
+        name: 'doctor',
         component: () => import('../view/depDoctor/doctor/doctor_dash'),
+    },
+    {
+        path: '/trashdoctors',
+        name: 'doctorTrashed',
+        component: () => import('../view/depDoctor/doctor/doctorTrashed'),
     },
     {
         path: '/newdoctor',
@@ -90,6 +100,11 @@ const routes = [
         path: '/editdoctor',
         name: 'editDoctor',
         component: () => import('../view/depDoctor/doctor/editDoctor'),
+    },
+    {
+        path: '/viewdoctor',
+        name: 'viewdoctor',
+        component: () => import('../view/depDoctor/doctor/viewDoctor'),
     },
 ];
 
