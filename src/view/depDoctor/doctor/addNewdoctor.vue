@@ -113,6 +113,7 @@
                                     <div class="form-group">
                                         <button
                                             class="btn btn-info btn-block btn-lg"
+                                            @click="postDoctor()"
                                         >
                                             Add Doctor
                                         </button>
@@ -144,23 +145,63 @@
 
 export default {
     name: 'addNewdoctor',
+    data() {
+        return {
+            doctors: {
+                doctor: [
+                    {
+                        first_name: 'fahed',
+                        last_name: 'fahed',
+                        description: 'fahedfahedfahedfahed',
+                        locale: 'en',
+                        doctor_id: 1,
+                    },
+                    {
+                        first_name: 'fahed',
+                        last_name: 'fahed',
+                        description: 'fahedfahedfahedfahed',
+                        locale: 'en',
+                        doctor_id: 1,
+                    },
+                    {
+                        first_name: 'رهف',
+                        last_name: 'رهف',
+                        description: 'فهدفهدفهدفهد',
+                        locale: 'ar',
+                        doctor_id: 1,
+                    },
+                ],
+                is_active: 1,
+                is_approved: 1,
+                image: 'fafaffafa',
+                social_media_id: 1,
+                clinic_id: 1,
+                appointments_id: 1,
+                specialty_id: 1,
+                hospital_id: 1,
+                created_at: null,
+                updated_at: null,
+            },
+        };
+    },
     methods: {
         // postDoctor() {
         //   axios.post(
-        //       'http://edalili.e-dalely.com/public/api/doctor/create',
-        //       this.Brands
+        //       'http://doctors.e-dalely.com/public/api/doctor/create',
+        //       this.doctors
         //   );
         //   if (
-        //       this.Brands.brands[2].name == null ||
-        //       this.Brands.brands[2].description == null ||
-        //       this.Brands.image == null
+        //       this.doctors.doctor[2].first_name == null ||
+        //       this.doctors.doctor[2].last_name == null ||
+        //       this.doctors.doctor[2].description == null ||
+        //       this.doctor.image == null
         //   ) {
         //     document.getElementById('alert').classList.add('block');
         //   } else {
         //     document.getElementById('alert').classList.remove('block');
         //     document.getElementById('alertt').classList.add('block');
-        //     console.log(JSON.stringify(this.Brands));
-        //     this.$router.push({ name: 'doctor_dash' });
+        //     console.log(JSON.stringify(this.doctors));
+        //     this.$router.push({ name: 'doctor' });
         //   }
         // },
         allowDrop(ev) {
