@@ -154,7 +154,7 @@
 import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
-    name: 'editDoctor',
+    name: 'editdoctor',
     data() {
         return {
             doctors: {

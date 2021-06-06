@@ -1,6 +1,6 @@
 <template>
     <div class="topnav">
-        <router-link class="active a" to="/doctores">Dectors</router-link>
+        <router-link class="active a" to="/admin/doctors">Dectors</router-link>
         <router-link class="a" to="/trashdoctors">Dector trached</router-link>
     </div>
 </template>
