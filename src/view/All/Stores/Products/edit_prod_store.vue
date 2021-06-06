@@ -1,7 +1,7 @@
 <template>
     <div class="parent">
         <div class="selected">
-            Products <span style="color: red">/</span> Edit Products
+   Store <span style="color: red">/ {{this.$route.params.id}} /</span> Products <span style="color: red">/ {{this.$route.params.id_product}} /</span> Edit Products
         </div>
         <div class="custom">
             <div class="custom_Gender">Gender</div>

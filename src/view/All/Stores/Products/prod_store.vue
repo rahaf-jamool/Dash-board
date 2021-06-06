@@ -1,38 +1,39 @@
 <template>
     <div class="parent">
-        <div class="selected">Stores</div>
-        <div class="new_store">
-            <button @click="newProduct">New Store</button>
+               <div class="selected">
+            Store <span style="color: red">/{{this.$route.params.id}}</span><span style="color: red">/</span> Product
+        </div>
+        <div class="new_product">
+            <button @click="newProduct">New Product</button>
         </div>
         <div class="contain">
-            <div class="nav_store">
+            <div class="nav_Product">
                 <div style="background-color: #ddd; padding: 20px" class="id">
                     id
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="logo">
-                    logo
+                <div style="background-color: #ddd; padding: 20px">
+                    img<img class="img" src="" />
                 </div>
-                
                 <div style="background-color: #ddd; padding: 20px" class="name">
                     name
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="sections">
-                 sections
-                </div>
-                <div style="background-color: #ddd; padding: 20px" class="status">
+
+                <div
+                    style="background-color: #ddd; padding: 20px"
+                    class="status"
+                >
                     status
-                </div>    
+                </div>
                 <div style="background-color: #ddd; padding: 20px" class="edit">
                     edit
                 </div>
-                <stores
-                    v-for="items in Stores"
+                <prod
+                    v-for="items in store.product"
                     :key="items.pr"
                     :id="items.id"
-                    :title="items.title"
-                    :section="items.section"
-                    :is_active	="items.is_active	"
-                    
+                    :name="items.name"
+                    :image="items.image"
+                    :is_appear="items.is_appear"
                 />
             </div>
         </div>
@@ -40,28 +41,28 @@
 </template>
 
 <script>
-import stores from '../Stores/store';
+import prod from '../Products/prod.vue';
 import { mapState } from 'vuex';
 export default {
-    name: 'stores_dash',
+    name: 'prod_store',
     components: {
-        stores,
+        prod,
     },
     data() {
         return {};
     },
     methods: {
         newProduct() {
-            this.$router.push(`/new_store`);
+            this.$router.push(`/store/${this.$route.params.id}/new_product`);
         },
     },
     computed: {
-               ...mapState({
-            Stores: (state) => state.Stores.Stores,
+        ...mapState({
+            store: (state) => state.Stores.store,
         }),
     },
     mounted() {
-        this.$store.dispatch('loadStores');
+  this.$store.dispatch('loadstore', this.$route.params.id);
     },
 };
 </script>
@@ -75,12 +76,12 @@ export default {
         '. . selected new_product new_product . . . . .'
         '. . contain contain contain contain contain contain contain contain';
 }
-.new_store {
+.new_product {
     border-radius: 5px;
     grid-area: new_product;
     margin: 10px;
 }
-.new_store button {
+.new_product button {
     border: none;
     background-color: #0eacc6;
     padding: 10px;
@@ -97,19 +98,25 @@ export default {
     width: 100%;
     grid-area: contain;
 }
-.nav_store {
+.nav_Product {
     display: grid;
     grid-template-areas:
-        'id logo name sections status edit'
-        'stores stores stores stores stores stores';
+        'id img name status edit'
+        'product product product product product';
 }
-.Contain_store .id {
+.Contain_Product .id {
     grid-area: id;
 }
-.Contain_store .edit {
+.Contain_Product .img {
+    grid-area: img;
+}
+.Contain_Product .status {
+    grid-area: status;
+}
+.Contain_Product .edit {
     grid-area: edit;
 }
-.Contain_store .stores {
-    grid-area: prodstoresuct;
+.Contain_Product .product {
+    grid-area: product;
 }
 </style>

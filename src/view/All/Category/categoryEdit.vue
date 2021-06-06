@@ -201,7 +201,11 @@ export default {
         };
     },
     computed: {
-        ...mapState(['CategoryID', 'sections', 'Categories']),
+        ...mapState({
+            Categories: (state) => state.All.Categories,
+            CategoryID: (state) => state.All.CategoryID,
+            sections: (state) => state.All.sections,
+        }),
     },
     mounted() {
         this.$store.dispatch('loadCategories');

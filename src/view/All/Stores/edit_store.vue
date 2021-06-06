@@ -94,7 +94,9 @@ export default {
         }
     },
     computed: {
-         ...mapState(['store']),
+        ...mapState({
+            store: (state) => state.Stores.store,
+        }),
     },
     mounted() {
 

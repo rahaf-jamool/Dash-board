@@ -3,7 +3,8 @@
         <div><input style="margin: 0px 10px" type="checkbox" />{{ id }}</div>
           <div><img v-lazy="`${image}`" /></div>
     
-           <div>{{ title }}</div>
+        <router-link :to="`/store/${id}/product`" style="margin: auto;">
+                <div>{{ title }}</div></router-link>
            <select class="sections">
                <option v-for="item in section" :key="item.ps" > {{item.name}} </option>
            </select>

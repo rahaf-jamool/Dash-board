@@ -4,10 +4,10 @@
             <div class="contain m-4 col-10">
                 <div class="container">
                     <div class="float-right row m-6">
-                        <router-link to="/brandnew"
+                        <router-link to="/newdoctor"
                             ><button class="btn btn-info float-right">
                                 <i class="fa fa-plus"></i>
-                                &nbsp;&nbsp; Add New Brand
+                                &nbsp;&nbsp; Add New Doctor
                             </button>
                         </router-link>
                     </div>
@@ -19,58 +19,51 @@
                             <tr class="text-center bg-info text-light">
                                 <th class="id">Id</th>
                                 <th class="img">Image</th>
-                                <th class="name">Name</th>
-                                <th>Description</th>
-                                <th class="status">Status</th>
-                                <th class="edit">Action</th>
+                                <th class="name">FirstName</th>
+                                <th>LastName</th>
+                                <th class="status">Description</th>
+                                <th class="edit">Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr
-                                class="text-center"
-                                v-for="items in Brands"
-                                :key="items.id"
-                            >
+                            <tr class="text-center">
                                 <td>
                                     <input
                                         style="margin: 0px 10px"
                                         type="checkbox"
-                                    />{{ items.id }}
+                                    />
+                                    id
                                 </td>
                                 <td>
-                                    <img v-lazy="`${items.image}`" />
+                                    <img />
                                 </td>
+                                <td>FirstName</td>
+                                <td>LastName</td>
+                                <td>description</td>
                                 <td>
-                                    {{ items.name }}
-                                </td>
-                                <td>{{ items.description }}</td>
-                                <td>
-                                    <i
-                                        v-if="items.is_active == '1'"
-                                        class="fa fa-check"
-                                    ></i>
-                                    <i v-else class="fa fa-times"></i>
+                                    status
+                                    <!--                                                            <i-->
+                                    <!--                                                                class="fa fa-check"-->
+                                    <!--                                                            ></i>-->
+                                    <!--                                                            <i  class="fa fa-times"></i>-->
                                 </td>
                                 <td class="Action">
                                     <router-link
                                         :to="{
-                                            name: 'brand_view',
-                                            params: { id: items.id },
+                                            name: 'viewDoctor',
                                         }"
                                         class="text-info mr-4"
                                         ><i class="fa fa-eye"></i
                                     ></router-link>
                                     <router-link
                                         :to="{
-                                            name: 'brand_edit',
-                                            params: { id: items.id },
+                                            name: 'editDoctor',
                                         }"
                                         class="text-success mr-4"
                                         ><i class="fa fa-edit"></i
                                     ></router-link>
-                                    <a
-                                        class="text-danger"
-                                        @click="delBrand(items)"
+                                    <a class="text-danger"
                                         ><i class="fa fa-trash-alt"></i
                                     ></a>
                                 </td>
@@ -84,25 +77,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 export default {
-    name: 'brand_dash',
-    data() {
-        return {};
-    },
-    methods: {
-        delBrand(items) {
-            this.$store.dispatch('deleteBrand', items);
-        },
-    },
-    computed: {
-        ...mapState({
-            Brands: (state) => state.All.Brands,
-        }),
-    },
-    mounted() {
-        this.$store.dispatch('loadBrands');
-    },
+    name: 'doctor_dash',
 };
 </script>
 
