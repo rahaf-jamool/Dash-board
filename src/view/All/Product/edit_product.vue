@@ -199,7 +199,7 @@ export default {
         // Pushes posts to the server when called.//
         updateProduct() {      
             axios.put(
-                `/api/products/update/${this.ProductID[0].id}`,
+                `/api/products/update/${this.ProductID.id}`,
                 this.products
             );
 
@@ -231,7 +231,7 @@ export default {
                 for (var i=0;i<Imgs.length;i++) {
                      
             this.products.images[i] = Imgs[i].name ;
-            this.products.images[i] = {image: Imgs[i].name,product_id: this.ProductID[0].id,
+            this.products.images[i] = {image: Imgs[i].name,product_id: this.ProductID.id,
             is_cover: i === 0 ? 1 : 0
             }; 
                 }

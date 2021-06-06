@@ -24,6 +24,7 @@
                    
                 />
          </form>
+         
          <button class="save" @click="handleCustome">save</button>
     </div>
 </template>

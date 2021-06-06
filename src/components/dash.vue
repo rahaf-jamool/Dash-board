@@ -4,6 +4,22 @@
         <router-link to="/admin/categories" class="a"> Category </router-link>
         <router-link to="/admin/brands" class="a">Brands</router-link>
         <router-link to="/admin/custom" class="a">Custom field</router-link>
+        
+          <div class="dropdown mb-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Stores
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <router-link to="/admin/stores" class="ad">View Stores</router-link>
+                      <router-link to="/admin/stores" class="ad">Stores</router-link>
+                       <router-link to="/admin/stores" class="ad">Stores</router-link>
+                    </div>
+                  </div>
+                  
+
+    
+        
     </div>
 </template>
 
@@ -34,12 +50,20 @@ export default {
     color: #818181;
     display: block;
 }
-
+.sidebar .ad {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
 /* Style links on mouse-over */
 .sidebar .a:hover {
     color: #f1f1f1;
 }
-
+.sidebar .ad:hover {
+    color: #d75f5f;
+}
 /* Style the main content */
 .main {
     margin-left: 160px; /* Same as the width of the sidenav */

@@ -91,6 +91,21 @@ const routes = [
         path: '/custome_value',
         name: 'custome_value',
         component: () => import('../view/All/Custom field/custome_value'),
+    },    ////stores dashboard////
+    {
+        path: '/admin/stores',
+        name: '/admin/stores',
+        component: () => import('../view/All/Stores/stores_dash'),
+    },
+    {
+        path: '/new_store',
+        name: 'new_store',
+        component: () => import('../view/All/Stores/new_store')
+    },
+    {
+        path: '/edit_store/:id',
+        name: 'edit_store',
+        component: () => import('../view/All/Stores/edit_store')
     },
 ];
 
