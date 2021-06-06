@@ -303,8 +303,8 @@ export default {
     display: grid;
     font-size: 18px;
     grid-template-areas:
-        '. . . . selected . . . custom custom'
-        '. contain contain contain contain contain contain contain custom custom';
+        'selected selected selected custom'
+        ' contain contain contain custom';
 }
 .parent .save {
     background-color: #18ade8;
