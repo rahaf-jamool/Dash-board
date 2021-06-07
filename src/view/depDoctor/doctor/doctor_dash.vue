@@ -70,7 +70,7 @@
                                         ><i class="fa fa-edit"></i
                                     ></router-link>
                                     <a class="text-danger"
-                                        ><i class="fa fa-trash-alt"></i
+                                        ><i class="fa fa-trash-alt" @click="delDoctor(items)"></i
                                     ></a>
                                 </td>
                             </tr>
@@ -95,6 +95,11 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadDoctors');
+    },
+    methods: {
+        delDoctor(items) {
+            this.$store.dispatch('deleteDoctor', items);
+        },
     },
 };
 </script>

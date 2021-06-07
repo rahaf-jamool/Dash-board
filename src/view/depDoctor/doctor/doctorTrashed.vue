@@ -45,7 +45,7 @@
                                 <td class="Action">
                                     <i class="fas fa-trash-restore mr-3"></i>
                                     <a class="text-danger"
-                                        ><i class="fa fa-trash-alt"></i
+                                        ><i class="fa fa-trash-alt" @click="trashDoctor(items)"></i
                                     ></a>
                                 </td>
                             </tr>
@@ -71,6 +71,11 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadDoctorTrashed');
+    },
+     methods: {
+        trashDoctor(items) {
+            this.$store.dispatch('trashDoctor', items);
+        },
     },
 };
 </script>
