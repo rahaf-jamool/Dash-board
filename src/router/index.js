@@ -134,10 +134,20 @@ const routes = [
     },
    
     //doctor dashboard//
+    // {
+    //     path: '/admin/doctors',
+    //     name: 'dosctors',
+    //     component: () => import('../view/depDoctor/doctor/dosctors'),
+    // },
     {
         path: '/admin/doctors',
-        name: 'doctor_dash',
+        name: 'doctor',
         component: () => import('../view/depDoctor/doctor/doctor_dash'),
+    },
+    {
+        path: '/trashdoctors',
+        name: 'doctorTrashed',
+        component: () => import('../view/depDoctor/doctor/doctorTrashed'),
     },
     {
         path: '/newdoctor',
@@ -146,8 +156,15 @@ const routes = [
     },
     {
         path: '/editdoctor',
-        name: 'editDoctor',
+        name: 'editdoctor',
         component: () => import('../view/depDoctor/doctor/editDoctor'),
+        params: true,
+    },
+    {
+        path: '/viewdoctor',
+        name: 'viewdoctor',
+        component: () => import('../view/depDoctor/doctor/viewDoctor'),
+        params: true,
     },
 ];
 

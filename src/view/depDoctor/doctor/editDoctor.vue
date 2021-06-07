@@ -32,6 +32,9 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="FirstName"
+                                            v-model="
+                                                doctors.doctor[2].first_name
+                                            "
                                             required
                                         />
                                     </div>
@@ -41,6 +44,9 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="LastName"
+                                            v-model="
+                                                doctors.doctor[2].last_name
+                                            "
                                             required
                                         />
                                     </div>
@@ -50,6 +56,9 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="Description"
+                                            v-model="
+                                                doctors.doctor[2].description
+                                            "
                                             required
                                         />
                                     </div>
@@ -61,6 +70,7 @@
                                             type="text"
                                             class="form-control form-control-lg div1"
                                             placeholder="ImageURL"
+                                            v-model="doctors.image"
                                             required
                                         />
                                     </div>
@@ -113,6 +123,7 @@
                                     <div class="form-group">
                                         <button
                                             class="btn btn-info btn-block btn-lg"
+                                            @click="putDoctor()"
                                         >
                                             Update Doctor
                                         </button>
@@ -140,27 +151,69 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import axios from 'axios';
 export default {
-    name: 'editDoctor',
+    name: 'editdoctor',
+    data() {
+        return {
+            doctors: {
+                doctor: [
+                    {
+                        first_name: 'fahed',
+                        last_name: 'fahed',
+                        description: 'fahedfahedfahedfahed',
+                        locale: 'en',
+                        doctor_id: 1,
+                    },
+                    {
+                        first_name: 'fahed',
+                        last_name: 'fahed',
+                        description: 'fahedfahedfahedfahed',
+                        locale: 'en',
+                        doctor_id: 1,
+                    },
+                    {
+                        first_name: 'رهف',
+                        last_name: 'رهف',
+                        description: 'فهدفهدفهدفهد',
+                        locale: 'ar',
+                        doctor_id: 1,
+                    },
+                ],
+                is_active: 1,
+                is_approved: 1,
+                image: 'fafaffafa',
+                social_media_id: 1,
+                clinic_id: 1,
+                appointments_id: 1,
+                specialty_id: 1,
+                hospital_id: 1,
+                created_at: null,
+                updated_at: null,
+            },
+        };
+    },
     methods: {
-        // putDoctor() {
-        //   axios.put(
-        //       'http://edalili.e-dalely.com/public/api/doctor/update/',
-        //       this.Brands
-        //   );
-        //   if (
-        //       this.Brands.brands[2].name == null ||
-        //       this.Brands.brands[2].description == null ||
-        //       this.Brands.image == null
-        //   ) {
-        //     document.getElementById('alert').classList.add('block');
-        //   } else {
-        //     document.getElementById('alert').classList.remove('block');
-        //     document.getElementById('alertt').classList.add('block');
-        //     console.log(JSON.stringify(this.Brands));
-        //     this.$router.push({ name: 'brand_dash' });
-        //   }
-        // },
+        putDoctor() {
+            axios.put(
+                'http://doctors.e-dalely.com/public/api/doctor/update/',
+                this.doctors
+            );
+            if (
+                this.doctors.doctor[2].first_name == null ||
+                this.doctors.doctor[2].last_name == null ||
+                this.doctors.doctor[2].description == null ||
+                this.doctor.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alert').classList.remove('block');
+                document.getElementById('alertt').classList.add('block');
+                console.log(JSON.stringify(this.doctors));
+                // this.$router.push({ name: 'doctor' });
+            }
+        },
         allowDrop(ev) {
             ev.preventDefault();
         },
@@ -183,6 +236,14 @@ export default {
         //         };
         //     }
         // },
+    },
+    computed: {
+        ...mapState({
+            DoctorID: (state) => state.Doctors.DoctorID,
+        }),
+    },
+    mounted() {
+        this.$store.dispatch('loadDoctor', this.$route.params.id);
     },
 };
 </script>
