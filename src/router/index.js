@@ -42,6 +42,12 @@ const routes = [
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
     },
+       ////Product dashboard////
+    {
+        path: '/admin/products',
+        name: 'product_dash',
+        component: () => import('../view/All/Product/product_dash.vue'),
+    },
     {
         path: '/brandnew',
         name: 'brand_add',
@@ -75,6 +81,58 @@ const routes = [
         name: 'edit_product',
         component: () => import('../view/All/Product/edit_product'),
     },
+      ////custom dashboard////
+    {
+        path: '/admin/custom',
+        name: 'custom_dash',
+        component: () => import('../view/All/Custom field/custom_dash'),
+    },
+    {
+        path: '/new_custom',
+        name: 'new_custom',
+        component: () => import('../view/All/Custom field/new_custom'),
+    },
+    {
+        path: '/custome_value',
+        name: 'custome_value',
+        component: () => import('../view/All/Custom field/custome_value'),
+    },    ////stores dashboard////
+    {
+        path: '/admin/stores',
+        name: '/admin/stores',
+        component: () => import('../view/All/Stores/stores_dash'),
+    },
+    {
+        path: '/new_store',
+        name: 'new_store',
+        component: () => import('../view/All/Stores/new_store')
+    },
+    {
+        path: '/edit_store/:id',
+        name: 'edit_store',
+        component: () => import('../view/All/Stores/edit_store')
+    },
+    {
+        path: '/store/:id/product',
+        name: 'prod_store',
+        component: () => import('../view/All/Stores/Products/prod_store')
+    },
+    {
+        path: '/store/:id/new_product',
+        name: 'new_prod_store',
+        component: () => import('../view/All/Stores/Products/new_prod_store')
+    },
+    {
+        path: '/store/:id/product/:id_product',
+        name: 'edit_prod_store',
+        component: () => import('../view/All/Stores/Products/edit_prod_store')
+    },
+    {
+        path: '/store/product/not_impro',
+        name: 'not_impro_prod',
+        component: () => import('../view/All/Stores/Products/not_impro_prod')
+    },
+   
     //doctor dashboard//
     {
         path: '/admin/doctors',

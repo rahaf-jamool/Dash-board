@@ -3,7 +3,8 @@
         <router-link to="/admin/products" class="a"> Products </router-link>
         <router-link to="/admin/categories" class="a"> Category </router-link>
         <router-link to="/admin/brands" class="a">Brands</router-link>
-        <router-link to="" class="a">Custom field</router-link>
+        <router-link to="/admin/custom" class="a">Custom field</router-link>
+           <router-link to="/admin/stores" class="a"> Stores</router-link>
         <router-link to="/admin/doctors" class="a">Doctor</router-link>
     </div>
 </template>
@@ -40,7 +41,6 @@ export default {
 .sidebar .a:hover {
     color: #f1f1f1;
 }
-
 /* Style the main content */
 .main {
     margin-left: 160px; /* Same as the width of the sidenav */

@@ -1,80 +1,7 @@
 <template>
     <div class="parent">
         <div class="selected">
-            Products <span style="color: red">/</span> Edit Products
-        </div>
-        <div class="custom">
-            <div class="custom_Gender">Gender</div>
-            <div>
-                <input
-                    name="checkbox"
-                    type="checkbox"
-                   @click="HandelMaleGender"
-                />
-                <label >Male</label>
-            </div>
-            <div>
-                <input
-                    name="checkbox"
-                    type="checkbox"
-                    @click="HandelFemaleGender"
-                />
-                <label>Female</label>
-            </div>
-            <hr />
-            <div class="custom_Size">Size</div>
-            <div>
-                <input
-                    name="checkbox"
-                    type="checkbox"
-                    @click="HandelLargeSize"
-                />
-                <label>Large</label>
-            </div>
-            <div>
-                <input
-                    name="checkbox"
-                    type="checkbox"
-                    @click="HandelMediumSize"
-                />
-                <label>Medium</label>
-            </div>
-            <div>
-                <input
-                    name="checkbox"
-                    type="checkbox"
-                    @click="HandelSmallSize"
-                />
-                <label>Small</label>
-            </div>
-            <hr />
-            <div class="custom_Brand">Brand</div>
-                <div class="containd_Brands">
-            <div  v-for="item in Brands" :key="item.pr">
-                <input
-                    :id="`radio${item.id}`"
-                    name="radios1"
-                    type="radio"
-                    :value="item.id"
-                    v-model="products.brand_id"
-                />
-                <label :for="`radio${item.id}`">{{item.name}}</label>
-            </div>
-            </div>
-            <div class="custom_Categorires">Categorires</div>
-            <div class="containd_Categorires">
-            <div  v-for="items in Categories" :key="items.pr">
-                <input
-                    :id="`radio${items.id}`"
-                    name="radios2"
-                    type="radio"
-                    :value="items.id"
-                    v-model="products.category_id"
-                  
-                />
-                <label :for="`radio${items.id}`">{{items.name}}</label>
-            </div>
-            </div>
+   Store <span style="color: red">/ {{this.$route.params.id}} /</span> Products <span style="color: red">/ {{this.$route.params.id_product}} /</span> Edit Products
         </div>
         <div class="contain">
             <div class="alert" id="alert">
@@ -89,41 +16,34 @@
                 <input
                     type="text"
                     v-model="products.product[0].name"
-                    placeholder="name"
+                    placeholder="Price"
                 />
                 <hr />
                 <br />
                 <input
                     type="text"
                     v-model="products.product[0].short_des"
-                    placeholder="short_des"
-                />
-                <hr />
-                <br />
-                <input
-                    type="text"
-                    v-model="products.product[0].long_des"
-                    placeholder="long_des"
+                    placeholder="Quantity"
                 />
                 <hr />
                 <br />
             </form>
-            <UploadImages class="upload_img" :max="3" @change="handleImages" />
+           
             <button class="save" @click="updateProduct()">save</button>
         </div>
     </div>
 </template>
 
 <script>
-import UploadImages from "vue-upload-drop-images"
+
 import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
     name: 'new_product',
-    components: {UploadImages},
+    components: {},
     data() {
         return {
-            files:[],
+           
             products: {
                 product: [
                     {
@@ -210,34 +130,7 @@ export default {
                 document.getElementById('alertt').classList.add('block')  ;
             }
             console.log(JSON.stringify(this.products));
-        },
-        HandelMaleGender(){
-        this.products.customFeild[0].Gender[0] = {Male: 1,Female: 0}
-        },
-        HandelFemaleGender(){
-        this.products.customFeild[0].Gender[0] = {Male: 0,Female: 1}
-        },
-        HandelLargeSize(){
-        this.products.customFeild[1].Size[0] = {Large: 1,Medium: 0,Small: 0}
-        },
-        HandelMediumSize(){
-             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 1,Small: 0}
-        },
-        HandelSmallSize(){
-             this.products.customFeild[1].Size[0] = {Large: 0,Medium: 0,Small: 1}
-        },
-        handleImages(Imgs){
-               this.products.image = "http://localhost:8080/img/"+Imgs[0].name;
-                for (var i=0;i<Imgs.length;i++) {
-                     
-            this.products.images[i] = Imgs[i].name ;
-            this.products.images[i] = {image: Imgs[i].name,product_id: this.ProductID.id,
-            is_cover: i === 0 ? 1 : 0
-            }; 
-                }
-                console.log (this.products.images);
-                
-            }
+        }
     },
     computed: {
             ...mapState({
@@ -260,20 +153,14 @@ export default {
     display: grid;
     font-size: 18px;
     grid-template-areas:
-        'selected selected selected custom'
-        ' contain contain contain custom';
+        'selected '
+        'contain';
 }
-
 .selected {
     grid-area: selected;
     margin: auto;
     padding: 10px;
     background-color: #eee;
-}
-.custom {
-    width: 100%;
-    background-color: #ddd;
-    grid-area: custom;
 }
 .contain {
     width: 100%;
@@ -287,26 +174,6 @@ export default {
     color: #fff;
     margin: 20px;
     border-radius: 10px;
-}
-.custom {
-    width: 100%;
-    background-color: #ddd;
-    grid-area: custom;
-}
-.custom_Gender,
-.custom_Size,
-.custom_Brand,
-.custom_Categorires {
-    margin: 10px;
-    border: 0px solid;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
-    background-color: #dec;
-    text-shadow: 2px 2px 8px #f71919;
-}
-.containd_Categorires,
-.containd_Brands{
-     height: 130px;
-    overflow-y: scroll;
 }
 .selected {
     grid-area: selected;
@@ -358,7 +225,6 @@ form hr {
 .block{
     display: block;
 }
-
 .closebtn {
   margin-left: 15px;
   color: white;
@@ -369,12 +235,7 @@ form hr {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .closebtn:hover {
   color: black;
-}
-.upload_img{
-    width: 50%;
-    height: auto;
 }
 </style>
