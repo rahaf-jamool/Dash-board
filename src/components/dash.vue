@@ -3,7 +3,7 @@
         <div class="text">Dashboard</div>
         <ul>
             <li>
-                <a class="a"
+                <a class="a sell"
                     >SELL
                     <span class="fa fa-home"></span>
                 </a>
@@ -31,7 +31,7 @@
                 </ul>
             </li>
             <li>
-                <a class="a">Stores</a>
+                <a class="a sell">Stores</a>
                 <ul>
                     <li>
                         <router-link to="/admin/stores" class="a"
@@ -41,7 +41,7 @@
                 </ul>
             </li>
             <li>
-                <a class="a">Doctors</a>
+                <a class="a sell">Doctors</a>
                 <ul>
                     <li>
                         <router-link to="/admin/doctors" class="a"
@@ -120,5 +120,13 @@ nav ul ul li .a {
     font-size: 17px;
     color: #e6e6e6;
     padding-left: 60px;
+}
+nav ul li .sell {
+    border: 0px solid;
+    box-shadow: 0 4px 8px 0 rgba(92, 90, 90, 0.2),
+        0 6px 30px 0 rgba(95, 94, 94, 0.19);
+    background-color: #dec;
+    background: #1e1e1e;
+    box-shadow: 10px;
 }
 </style>
