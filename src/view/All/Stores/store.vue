@@ -1,13 +1,16 @@
 <template>
     <div class="stores">
         <div><input style="margin: 0px 10px" type="checkbox" />{{ id }}</div>
-          <div><img v-lazy="`${image}`" /></div>
-    
-        <router-link :to="`/store/${id}/product`" style="margin: auto;">
-                <div>{{ title }}</div></router-link>
-           <select class="sections">
-               <option v-for="item in section" :key="item.ps" > {{item.name}} </option>
-           </select>
+        <div><img v-lazy="`${image}`" /></div>
+
+        <router-link :to="`/store/${id}/product`" style="margin: auto">
+            <div>{{ title }}</div></router-link
+        >
+        <select class="sections">
+            <option v-for="item in section" :key="item.ps">
+                {{ item.name }}
+            </option>
+        </select>
         <div>
             <i v-if="is_active == 'Active'" class="fa fa-check"></i>
             <i v-else class="fa fa-times"></i>
@@ -29,7 +32,7 @@
 import axios from 'axios';
 export default {
     name: 'stores',
-    props: ['id', 'title','section','name','is_active'],
+    props: ['id', 'title', 'section', 'name', 'is_active'],
     data() {
         return {
             details: {
@@ -46,9 +49,7 @@ export default {
             console.log(JSON.stringify(this.is_active));
         },
     },
-    computed: {
-    
-    },
+    computed: {},
 };
 </script>
 <style scoped>
@@ -72,11 +73,9 @@ div i {
     color: red;
     font-size: 20px;
 }
-.sections{
+.sections {
     width: 100px;
     height: 80px;
     margin: auto;
 }
-
-
 </style>

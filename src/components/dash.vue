@@ -1,12 +1,57 @@
 <template>
-    <div class="sidebar">
-        <router-link to="/admin/products" class="a"> Products </router-link>
-        <router-link to="/admin/categories" class="a"> Category </router-link>
-        <router-link to="/admin/brands" class="a">Brands</router-link>
-        <router-link to="/admin/custom" class="a">Custom field</router-link>
-           <router-link to="/admin/stores" class="a"> Stores</router-link>
-        <router-link to="/admin/doctors" class="a">Doctor</router-link>
-    </div>
+    <nav class="sidebar">
+        <div class="text">Dashboard</div>
+        <ul>
+            <li>
+                <a class="a sell"
+                    >SELL
+                    <span class="fa fa-home"></span>
+                </a>
+                <ul>
+                    <li>
+                        <router-link to="/admin/products" class="a">
+                            Products
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/admin/categories" class="a">
+                            Category
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/admin/brands" class="a"
+                            >Brands</router-link
+                        >
+                    </li>
+                    <li>
+                        <router-link to="/admin/custom" class="a"
+                            >Custom field</router-link
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="a sell">Stores</a>
+                <ul>
+                    <li>
+                        <router-link to="/admin/stores" class="a"
+                            >All Stores</router-link
+                        >
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="a sell">Doctors</a>
+                <ul>
+                    <li>
+                        <router-link to="/admin/doctors" class="a"
+                            >All Doctor</router-link
+                        >
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -16,44 +61,72 @@ export default {
 </script>
 
 <style scoped>
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 .sidebar {
-    height: 100%;
-    width: 160px;
     position: fixed;
-    z-index: 1;
-    top: 0;
+    width: 200px;
+    height: 100%;
     left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 16px;
+    background: #1b1b1b;
 }
-
-/* Style sidebar links */
-.sidebar .a {
-    padding: 6px 8px 6px 16px;
+.sidebar .text {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 65px;
+    text-align: center;
+    background: #1e1e1e;
+    letter-spacing: 1px;
+}
+nav ul {
+    background: #1b1b1b;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+nav ul li {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+nav ul li .a {
+    color: #fff;
     text-decoration: none;
-    font-size: 20px;
-    color: #818181;
+    font-size: 18px;
+    font-weight: 500;
     display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
 }
-
-/* Style links on mouse-over */
-.sidebar .a:hover {
-    color: #f1f1f1;
+nav ul li .a:hover {
+    color: cyan;
+    background: #1e1e1e;
+    border-left-color: cyan;
 }
-/* Style the main content */
-.main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 10px;
+nav ul ul {
+    position: static;
+    /* display: none; */
 }
-
-/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-@media screen and (max-height: 450px) {
-    .sidebar {
-        padding-top: 15px;
-    }
-    .sidebar .a {
-        font-size: 18px;
-    }
+nav ul ul li {
+    line-height: 42px;
+    border-bottom: none;
+}
+nav ul ul li .a {
+    font-size: 17px;
+    color: #e6e6e6;
+    padding-left: 60px;
+}
+nav ul li .sell {
+    border: 0px solid;
+    box-shadow: 0 4px 8px 0 rgba(92, 90, 90, 0.2),
+        0 6px 30px 0 rgba(95, 94, 94, 0.19);
+    background-color: #dec;
+    background: #1e1e1e;
+    box-shadow: 10px;
 }
 </style>

@@ -42,7 +42,7 @@ const routes = [
         name: 'brand_dash',
         component: () => import('../view/All/Brand/brand_dash'),
     },
-       ////Product dashboard////
+    ////Product dashboard////
     {
         path: '/admin/products',
         name: 'product_dash',
@@ -81,7 +81,7 @@ const routes = [
         name: 'edit_product',
         component: () => import('../view/All/Product/edit_product'),
     },
-      ////custom dashboard////
+    ////custom dashboard////
     {
         path: '/admin/custom',
         name: 'custom_dash',
@@ -96,7 +96,7 @@ const routes = [
         path: '/custome_value',
         name: 'custome_value',
         component: () => import('../view/All/Custom field/custome_value'),
-    },    ////stores dashboard////
+    }, ////stores dashboard////
     {
         path: '/admin/stores',
         name: '/admin/stores',
@@ -105,39 +105,49 @@ const routes = [
     {
         path: '/new_store',
         name: 'new_store',
-        component: () => import('../view/All/Stores/new_store')
+        component: () => import('../view/All/Stores/new_store'),
     },
     {
         path: '/edit_store/:id',
         name: 'edit_store',
-        component: () => import('../view/All/Stores/edit_store')
+        component: () => import('../view/All/Stores/edit_store'),
     },
     {
         path: '/store/:id/product',
         name: 'prod_store',
-        component: () => import('../view/All/Stores/Products/prod_store')
+        component: () => import('../view/All/Stores/Products/prod_store'),
     },
     {
         path: '/store/:id/new_product',
         name: 'new_prod_store',
-        component: () => import('../view/All/Stores/Products/new_prod_store')
+        component: () => import('../view/All/Stores/Products/new_prod_store'),
     },
     {
         path: '/store/:id/product/:id_product',
         name: 'edit_prod_store',
-        component: () => import('../view/All/Stores/Products/edit_prod_store')
+        component: () => import('../view/All/Stores/Products/edit_prod_store'),
     },
     {
         path: '/store/product/not_impro',
         name: 'not_impro_prod',
-        component: () => import('../view/All/Stores/Products/not_impro_prod')
+        component: () => import('../view/All/Stores/Products/not_impro_prod'),
     },
-   
+
     //doctor dashboard//
+    // {
+    //     path: '/admin/doctors',
+    //     name: 'dosctors',
+    //     component: () => import('../view/depDoctor/doctor/dosctors'),
+    // },
     {
         path: '/admin/doctors',
-        name: 'doctor_dash',
+        name: 'doctor',
         component: () => import('../view/depDoctor/doctor/doctor_dash'),
+    },
+    {
+        path: '/trashdoctors',
+        name: 'doctorTrashed',
+        component: () => import('../view/depDoctor/doctor/doctorTrashed'),
     },
     {
         path: '/newdoctor',
@@ -146,8 +156,15 @@ const routes = [
     },
     {
         path: '/editdoctor',
-        name: 'editDoctor',
+        name: 'editdoctor',
         component: () => import('../view/depDoctor/doctor/editDoctor'),
+        params: true,
+    },
+    {
+        path: '/viewdoctor',
+        name: 'viewdoctor',
+        component: () => import('../view/depDoctor/doctor/viewDoctor'),
+        params: true,
     },
 ];
 

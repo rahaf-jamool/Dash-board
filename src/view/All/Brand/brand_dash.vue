@@ -110,6 +110,7 @@ export default {
 .parent {
     width: 100%;
     height: auto;
+    display: grid;
 }
 .option_dash {
     background-color: #ccc;
@@ -125,6 +126,7 @@ export default {
 .contain {
     width: 100%;
     left: 15%;
+    right: 5%;
 }
 .product {
     margin: auto;
