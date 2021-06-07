@@ -70,7 +70,7 @@ export default {
 }
 .sidebar {
     position: fixed;
-    width: 250px;
+    width: 200px;
     height: 100%;
     left: 0;
     background: #1b1b1b;

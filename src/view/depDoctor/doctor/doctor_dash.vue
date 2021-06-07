@@ -125,7 +125,7 @@ export default {
 }
 .contain {
     width: 100%;
-    left: 10%;
+    left: 15%;
     right: 5%;
 }
 .product {
