@@ -31,3 +31,15 @@ export const loadDoctor = ({ commit }, DoctorID) => {
             console.log('Error: ', error);
         });
 };
+export const loadDoctorTrashed = ({ commit }) => {
+    axios
+        .get(`http://doctors.e-dalely.com/public/api/doctor/getTrashed?lang=${lang}`)
+        .then((res) => {
+            console.warn('doctorstrashed :', res.data.doctor);
+            let doctorstrashed = res.data.doctor;
+            commit('SET_DoctorTrashed', doctorstrashed);
+        })
+        .catch(function (error) {
+            console.log('Error: ', error);
+        });
+};

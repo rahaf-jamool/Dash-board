@@ -154,18 +154,18 @@ const routes = [
         name: 'addNewdoctor',
         component: () => import('../view/depDoctor/doctor/addNewdoctor'),
     },
-    // {
-    //     path: '/editdoctor/:id',
-    //     name: 'editdoctor',
-    //     component: () => import('../view/depDoctor/doctor/editDoctor'),
-    //     params: true,
-    // },
-    // {
-    //     path: '/viewdoctor/:id',
-    //     name: 'viewdoctor',
-    //     component: () => import('../view/depDoctor/doctor/viewDoctor'),
-    //     params: true,
-    // },
+    {
+        path: '/editdoctor',
+        name: 'editdoctor',
+        component: () => import('../view/depDoctor/doctor/editDoctor'),
+        params: true,
+    },
+    {
+        path: '/viewdoctor',
+        name: 'viewdoctor',
+        component: () => import('../view/depDoctor/doctor/viewDoctor'),
+        params: true,
+    },
 ];
 
 const router = new VueRouter({

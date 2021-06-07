@@ -55,22 +55,20 @@
                                     <i v-else class="fa fa-times"></i>
                                 </td>
                                 <td class="Action">
-                                    <!-- <router-link
+                                    <router-link
                                         :to="{
                                             name: 'viewdoctor',
-                                            params: { id: items.id },
                                         }"
-                                        class="text-info mr-4"
+                                        class="text-info "
                                         ><i class="fa fa-eye"></i
                                     ></router-link>
                                     <router-link
                                         :to="{
                                             name: 'editdoctor',
-                                            params: { id: items.id },
                                         }"
-                                        class="text-success mr-4"
+                                        class="text-success "
                                         ><i class="fa fa-edit"></i
-                                    ></router-link> -->
+                                    ></router-link>
                                     <a class="text-danger"
                                         ><i class="fa fa-trash-alt"></i
                                     ></a>

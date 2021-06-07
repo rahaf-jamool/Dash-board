@@ -12,32 +12,36 @@
                                 <th class="name">FirstName</th>
                                 <th>LastName</th>
                                 <th class="status">Description</th>
-                                <th class="edit">Status</th>
+                                <!-- <th class="edit">Status</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
+                           <tr
+                                class="text-center"
+                                v-for="items in doctorstrashed"
+                                :key="items.id"
+                            >
                                 <td>
                                     <input
                                         style="margin: 0px 10px"
                                         type="checkbox"
                                     />
-                                    id
+                                    {{ items.id }}
                                 </td>
                                 <td>
-                                    <img />
+                                    <img v-lazy="`${items.image}`" />
                                 </td>
-                                <td>FirstName</td>
-                                <td>LastName</td>
-                                <td>description</td>
-                                <td>
-                                    status
-                                    <!--                                                            <i-->
-                                    <!--                                                                class="fa fa-check"-->
-                                    <!--                                                            ></i>-->
-                                    <!--                                                            <i  class="fa fa-times"></i>-->
-                                </td>
+                                <td>{{ items.first_name }}</td>
+                                <td>{{ items.last_name }}</td>
+                                <td>{{ items.description }}</td>
+                                <!-- <td>
+                                    <i
+                                        v-if="items.is_active == '0'"
+                                        class="fa fa-check"
+                                    ></i>
+                                    <i v-else class="fa fa-times"></i>
+                                </td> -->
                                 <td class="Action">
                                     <i class="fas fa-trash-restore mr-3"></i>
                                     <a class="text-danger"
@@ -55,9 +59,19 @@
 
 <script>
 import Dosctors from './dosctors';
+import { mapState } from 'vuex';
+
 export default {
     name: 'doctorTrashed',
     components: { Dosctors },
+    computed: {
+        ...mapState({
+            doctorstrashed: (state) => state.Doctors.doctorstrashed,
+        }),
+    },
+    mounted() {
+        this.$store.dispatch('loadDoctorTrashed');
+    },
 };
 </script>
 
