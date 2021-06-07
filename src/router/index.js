@@ -134,13 +134,13 @@ const routes = [
     },
    
     //doctor dashboard//
+    // {
+    //     path: '/admin/doctors',
+    //     name: 'dosctors',
+    //     component: () => import('../view/depDoctor/doctor/dosctors'),
+    // },
     {
         path: '/admin/doctors',
-        name: 'dosctors',
-        component: () => import('../view/depDoctor/doctor/dosctors'),
-    },
-    {
-        path: '/doctores',
         name: 'doctor',
         component: () => import('../view/depDoctor/doctor/doctor_dash'),
     },
@@ -154,16 +154,18 @@ const routes = [
         name: 'addNewdoctor',
         component: () => import('../view/depDoctor/doctor/addNewdoctor'),
     },
-    {
-        path: '/editdoctor',
-        name: 'editDoctor',
-        component: () => import('../view/depDoctor/doctor/editDoctor'),
-    },
-    {
-        path: '/viewdoctor',
-        name: 'viewdoctor',
-        component: () => import('../view/depDoctor/doctor/viewDoctor'),
-    },
+    // {
+    //     path: '/editdoctor/:id',
+    //     name: 'editdoctor',
+    //     component: () => import('../view/depDoctor/doctor/editDoctor'),
+    //     params: true,
+    // },
+    // {
+    //     path: '/viewdoctor/:id',
+    //     name: 'viewdoctor',
+    //     component: () => import('../view/depDoctor/doctor/viewDoctor'),
+    //     params: true,
+    // },
 ];
 
 const router = new VueRouter({

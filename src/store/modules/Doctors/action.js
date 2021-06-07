@@ -17,3 +17,17 @@ export const loadDoctors = ({ commit }) => {
             console.log('Error: ', error);
         });
 };
+export const loadDoctor = ({ commit }, DoctorID) => {
+    axios
+        .get(
+            `http://doctors.e-dalely.com/public/api/doctor/getById/${DoctorID}?lang=${lang}`
+        )
+        .then((res) => {
+            console.warn('DoctorID :', res.data.doctor);
+            let DoctorID = res.data.doctor;
+            commit('SET_DoctorID', DoctorID);
+        })
+        .catch(function (error) {
+            console.log('Error: ', error);
+        });
+};

@@ -55,20 +55,22 @@
                                     <i v-else class="fa fa-times"></i>
                                 </td>
                                 <td class="Action">
-                                    <router-link
+                                    <!-- <router-link
                                         :to="{
                                             name: 'viewdoctor',
+                                            params: { id: items.id },
                                         }"
                                         class="text-info mr-4"
                                         ><i class="fa fa-eye"></i
                                     ></router-link>
                                     <router-link
                                         :to="{
-                                            name: 'editDoctor',
+                                            name: 'editdoctor',
+                                            params: { id: items.id },
                                         }"
                                         class="text-success mr-4"
                                         ><i class="fa fa-edit"></i
-                                    ></router-link>
+                                    ></router-link> -->
                                     <a class="text-danger"
                                         ><i class="fa fa-trash-alt"></i
                                     ></a>
@@ -117,7 +119,8 @@ export default {
 }
 .contain {
     width: 100%;
-    left: 15%;
+    left: 10%;
+    right: 5%;
 }
 .product {
     margin: auto;
