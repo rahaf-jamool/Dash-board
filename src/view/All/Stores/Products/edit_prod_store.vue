@@ -15,14 +15,14 @@
             <form>
                 <input
                     type="text"
-                    v-model="products.product[0].name"
+                    v-model="this.products.price"
                     placeholder="Price"
                 />
                 <hr />
                 <br />
                 <input
                     type="text"
-                    v-model="products.product[0].short_des"
+                    v-model="this.products.quantity"
                     placeholder="Quantity"
                 />
                 <hr />
@@ -45,85 +45,24 @@ export default {
         return {
            
             products: {
-                product: [
-                    {
-                        local: 'ar',
-                        name: null,
-                        meta: 'arefe',
-                        short_des: null,
-                        long_des: null,
+                "store_id": 9,
+                "Product_id": 1,
+                "is_active": 1,
+                "is_appear": 1,
+                "price": null,
+                "quantity": null
                     },
-                    {
-                        local: 'en',
-                        name: 'efen',
-                        meta: 'efefen',
-                        short_des: 'en en',
-                        long_des: 'en en',
-                    },
-                    {
-                        local: 'fr',
-                        name: 'ffer',
-                        meta: 'ffefr',
-                        short_des: 'fr fr',
-                        long_des: 'fr fr',
-                    },
-                ],
-                brand_id: null,
-                barcode: 'mobiles',
-                slug: 'mobiles',
-                rating_id: 1,
-                offer_id: 1,
-                image: [],
-                custom_feild_id: 1,
-                is_active: 1,
-                is_appear: 1,
-                category_id: null,
-                category: [
-                    {
-                        category_id: 1,
-                    },
-                    {
-                        category_id: 2,
-                    },
-                    {
-                        category_id: 3,
-                    },
-                ],
-                customFeild: [
-                    {
-
-                    },
-
-                ],
-                images: [
-                    {
-                        product_id: 1,
-                        image: 'asdasd',
-                        is_cover: 1,
-                    },
-                    {
-                        product_id: 1,
-                       image: 'asdasd',
-                        is_cover: 0,
-                    },
-                    {
-                        product_id: 1,
-                       image: 'asdasd',
-                        is_cover: 0,
-                    },
-                ],
-            },
         };
     },
     methods: {
         // Pushes posts to the server when called.//
         updateProduct() {      
             axios.put(
-                `/api/products/update/${this.ProductID.id}`,
+                `/api/stores/hiddenProductByQuantity/${this.ProductID.id}`,
                 this.products
             );
 
-            if(this.products.product[0].name == null || this.products.product[0].short_des == null || this.products.product[0].long_des == null || this.products.image == null){
+            if(this.products.price == null || this.products.quantity == null){
                document.getElementById('alert').classList.add('block')  ;
             }
             else{

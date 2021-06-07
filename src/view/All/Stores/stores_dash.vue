@@ -72,8 +72,8 @@ export default {
     height: auto;
     display: grid;
     grid-template-areas:
-        '. . selected new_product new_product . . . . .'
-        '. . contain contain contain contain contain contain contain contain';
+        '. . . . . selected new_product new_product . .'
+        '. . . . contain contain contain contain contain contain';
 }
 .new_store {
     border-radius: 5px;
