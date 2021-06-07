@@ -11,7 +11,8 @@ export const Delete_Doctor = (state, itemsId) => {
     let doctors = state.doctors.filter((v) => v.id != itemsId);
     state.doctors = doctors;
 };
-export const Trash_Doctor = (state, itemsId) => {/*  */
+export const Trash_Doctor = (state, itemsId) => {
+    /*  */
     let doctorstrashed = state.doctorstrashed.filter((v) => v.id != itemsId);
     state.doctorstrashed = doctorstrashed;
 };

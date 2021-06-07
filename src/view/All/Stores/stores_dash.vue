@@ -12,16 +12,22 @@
                 <div style="background-color: #ddd; padding: 20px" class="logo">
                     logo
                 </div>
-                
+
                 <div style="background-color: #ddd; padding: 20px" class="name">
                     name
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="sections">
-                 sections
+                <div
+                    style="background-color: #ddd; padding: 20px"
+                    class="sections"
+                >
+                    sections
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="status">
+                <div
+                    style="background-color: #ddd; padding: 20px"
+                    class="status"
+                >
                     status
-                </div>    
+                </div>
                 <div style="background-color: #ddd; padding: 20px" class="edit">
                     edit
                 </div>
@@ -31,8 +37,7 @@
                     :id="items.id"
                     :title="items.title"
                     :section="items.section"
-                    :is_active	="items.is_active	"
-                    
+                    :is_active="items.is_active"
                 />
             </div>
         </div>
@@ -56,7 +61,7 @@ export default {
         },
     },
     computed: {
-               ...mapState({
+        ...mapState({
             Stores: (state) => state.Stores.Stores,
         }),
     },
@@ -69,6 +74,8 @@ export default {
 .parent {
     font-size: 18px;
     width: 100%;
+    left: 15%;
+    right: 5%;
     height: auto;
     display: grid;
     grid-template-areas:
@@ -96,6 +103,8 @@ export default {
 .contain {
     width: 100%;
     grid-area: contain;
+    left: 10%;
+    right: 5%;
 }
 .nav_store {
     display: grid;

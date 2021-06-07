@@ -1,15 +1,29 @@
 <template>
     <div class="parent">
         <div class="selected">
-   Store <span style="color: red">/ {{this.$route.params.id}} /</span> Products <span style="color: red">/ {{this.$route.params.id_product}} /</span> Edit Products
+            Store
+            <span style="color: red">/ {{ this.$route.params.id }} /</span>
+            Products
+            <span style="color: red"
+                >/ {{ this.$route.params.id_product }} /</span
+            >
+            Edit Products
         </div>
         <div class="contain">
             <div class="alert" id="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
                 <strong>Warning!</strong> You must fill in all fields.
             </div>
             <div class="alertt" id="alertt">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
                 <strong>Good</strong> "operation accomplished successfully.
             </div>
             <form>
@@ -28,14 +42,13 @@
                 <hr />
                 <br />
             </form>
-           
+
             <button class="save" @click="updateProduct()">save</button>
         </div>
     </div>
 </template>
 
 <script>
-
 import { mapState } from 'vuex';
 import axios from 'axios';
 export default {
@@ -43,7 +56,6 @@ export default {
     components: {},
     data() {
         return {
-           
             products: {
                 product: [
                     {
@@ -89,12 +101,7 @@ export default {
                         category_id: 3,
                     },
                 ],
-                customFeild: [
-                    {
-
-                    },
-
-                ],
+                customFeild: [{}],
                 images: [
                     {
                         product_id: 1,
@@ -103,12 +110,12 @@ export default {
                     },
                     {
                         product_id: 1,
-                       image: 'asdasd',
+                        image: 'asdasd',
                         is_cover: 0,
                     },
                     {
                         product_id: 1,
-                       image: 'asdasd',
+                        image: 'asdasd',
                         is_cover: 0,
                     },
                 ],
@@ -117,23 +124,27 @@ export default {
     },
     methods: {
         // Pushes posts to the server when called.//
-        updateProduct() {      
+        updateProduct() {
             axios.put(
                 `/api/products/update/${this.ProductID.id}`,
                 this.products
             );
 
-            if(this.products.product[0].name == null || this.products.product[0].short_des == null || this.products.product[0].long_des == null || this.products.image == null){
-               document.getElementById('alert').classList.add('block')  ;
-            }
-            else{
-                document.getElementById('alertt').classList.add('block')  ;
+            if (
+                this.products.product[0].name == null ||
+                this.products.product[0].short_des == null ||
+                this.products.product[0].long_des == null ||
+                this.products.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alertt').classList.add('block');
             }
             console.log(JSON.stringify(this.products));
-        }
+        },
     },
     computed: {
-            ...mapState({
+        ...mapState({
             ProductID: (state) => state.All.ProductID,
             Categories: (state) => state.All.Categories,
             Brands: (state) => state.All.Brands,
@@ -141,7 +152,7 @@ export default {
     },
     mounted() {
         this.$store.dispatch('loadProduct', this.$route.params.id);
-        this.$store.dispatch('loadBrands'); 
+        this.$store.dispatch('loadBrands');
         this.$store.dispatch('loadCategories');
     },
 };
@@ -200,42 +211,41 @@ form hr {
     margin: 0 auto;
 }
 .alert {
-  display: none;
-  padding: 80px;
-  background-color: #f44336;
-  color: white;
-  position: absolute;
-  right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
+    display: none;
+    padding: 80px;
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
 }
 .alertt {
-  display: none;
-  padding: 80px;
-  background-color: #00b618;
-  color: white;
-  position: absolute;
-   right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
-
+    display: none;
+    padding: 80px;
+    background-color: #00b618;
+    color: white;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
 }
-.block{
+.block {
     display: block;
 }
 .closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 .closebtn:hover {
-  color: black;
+    color: black;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
     <div class="parent">
         <div class="selected">
-           Store <span style="color: red">/ {{this.$route.params.id}}/</span> New Product
+            Store
+            <span style="color: red">/ {{ this.$route.params.id }}/</span> New
+            Product
         </div>
         <div class="contain">
             <div class="alert" id="alert">
@@ -48,13 +50,12 @@
 </template>
 
 <script>
-
 import { mapState } from 'vuex';
 import axios from 'axios';
 
 export default {
     name: 'new_product',
-    components: {  },
+    components: {},
     data() {
         return {
             files: [],
@@ -162,10 +163,9 @@ export default {
             }
 
             console.log(JSON.stringify(this.products));
-        }
-            
         },
-    
+    },
+
     computed: {
         ...mapState({
             Categories: (state) => state.All.Categories,

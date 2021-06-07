@@ -59,18 +59,21 @@
                                         :to="{
                                             name: 'viewdoctor',
                                         }"
-                                        class="text-info "
+                                        class="text-info"
                                         ><i class="fa fa-eye"></i
                                     ></router-link>
                                     <router-link
                                         :to="{
                                             name: 'editdoctor',
                                         }"
-                                        class="text-success "
+                                        class="text-success"
                                         ><i class="fa fa-edit"></i
                                     ></router-link>
                                     <a class="text-danger"
-                                        ><i class="fa fa-trash-alt" @click="delDoctor(items)"></i
+                                        ><i
+                                            class="fa fa-trash-alt"
+                                            @click="delDoctor(items)"
+                                        ></i
                                     ></a>
                                 </td>
                             </tr>
@@ -122,7 +125,7 @@ export default {
 }
 .contain {
     width: 100%;
-    left: 10%;
+    left: 15%;
     right: 5%;
 }
 .product {
