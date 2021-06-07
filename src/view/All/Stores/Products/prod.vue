@@ -8,9 +8,7 @@
             <i v-else class="fa fa-times"></i>
         </div>
         <div class="icon">
-            <router-link
-                :to="`/store/${this.$route.params.id}/product/${id}`"
-            >
+            <router-link :to="`/store/${this.$route.params.id}/product/${id}`">
                 <i class="fas fa-edit"></i>
             </router-link>
 

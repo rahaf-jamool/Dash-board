@@ -12,16 +12,22 @@
                 <div style="background-color: #ddd; padding: 20px" class="logo">
                     logo
                 </div>
-                
+
                 <div style="background-color: #ddd; padding: 20px" class="name">
                     name
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="sections">
-                 sections
+                <div
+                    style="background-color: #ddd; padding: 20px"
+                    class="sections"
+                >
+                    sections
                 </div>
-                <div style="background-color: #ddd; padding: 20px" class="status">
+                <div
+                    style="background-color: #ddd; padding: 20px"
+                    class="status"
+                >
                     status
-                </div>    
+                </div>
                 <div style="background-color: #ddd; padding: 20px" class="edit">
                     edit
                 </div>
@@ -31,8 +37,7 @@
                     :id="items.id"
                     :title="items.title"
                     :section="items.section"
-                    :is_active	="items.is_active	"
-                    
+                    :is_active="items.is_active"
                 />
             </div>
         </div>
@@ -56,7 +61,7 @@ export default {
         },
     },
     computed: {
-               ...mapState({
+        ...mapState({
             Stores: (state) => state.Stores.Stores,
         }),
     },

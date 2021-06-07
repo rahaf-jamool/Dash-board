@@ -1,19 +1,26 @@
 <template>
     <div class="parent">
-
         <div class="selected">
             Stores <span style="color: red">/</span> New Store
         </div>
 
         <div class="contain">
-        <div class="alert" id="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-           <strong>Warning!</strong> You must fill in all fields.
-        </div>
-        <div class="alertt" id="alertt">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-            <strong>Good</strong> "operation accomplished successfully.
-        </div>
+            <div class="alert" id="alert">
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
+                <strong>Warning!</strong> You must fill in all fields.
+            </div>
+            <div class="alertt" id="alertt">
+                <span
+                    class="closebtn"
+                    onclick="this.parentElement.style.display='none';"
+                    >&times;</span
+                >
+                <strong>Good</strong> "operation accomplished successfully.
+            </div>
 
             <form>
                 <input
@@ -32,8 +39,6 @@
 </template>
 
 <script>
-
-
 import axios from 'axios';
 
 export default {
@@ -41,65 +46,56 @@ export default {
     components: {},
     data() {
         return {
-            files:[],
+            files: [],
             stores: {
-    "store": 
-    [
-        {
-            "local":"ar",
-            "title": null
-        },
-        {
-            "local":"en",
-            "title":"basel"
-        },
-        {
-            "local":"fr",
-            "title":"basel"
-        }
-    ],
-    "loc_id": "1",
-    "country_id": "1",
-    "gov_id": "1",
-    "city_id": "1",
-    "street_id": "1",
-    "offer_id": "1",
-    "socialMedia_id": "1",
-    "followers_id": "1",
-    "is_active": 1,
-    "is_approved": 1,
-    "delivery": 1,
-    "edalilyPoint": "edalilyPoint",
-    "rating": "rating",
-    "workingHours": "workingHours",
-    "logo": "mobiles"
-},
+                store: [
+                    {
+                        local: 'ar',
+                        title: null,
+                    },
+                    {
+                        local: 'en',
+                        title: 'basel',
+                    },
+                    {
+                        local: 'fr',
+                        title: 'basel',
+                    },
+                ],
+                loc_id: '1',
+                country_id: '1',
+                gov_id: '1',
+                city_id: '1',
+                street_id: '1',
+                offer_id: '1',
+                socialMedia_id: '1',
+                followers_id: '1',
+                is_active: 1,
+                is_approved: 1,
+                delivery: 1,
+                edalilyPoint: 'edalilyPoint',
+                rating: 'rating',
+                workingHours: 'workingHours',
+                logo: 'mobiles',
+            },
         };
     },
     methods: {
         // Pushes posts to the server when called.
         postPost() {
-            axios.post(
-                '/api/stores/create',
-                this.stores
-            );
-            if(this.stores.store[0].title == null ){
-               // alert("You must fill in all fields");
-                  document.getElementById('alert').classList.add('block')  ;
-            }
-            else{
-                document.getElementById('alertt').classList.add('block')  ;
+            axios.post('/api/stores/create', this.stores);
+            if (this.stores.store[0].title == null) {
+                // alert("You must fill in all fields");
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alertt').classList.add('block');
             }
 
             console.log(JSON.stringify(this.stores));
-        }
+        },
     },
-    computed: {
-     
-    },
-    mounted() {
-
-    },
+    computed: {},
+    mounted() {},
 };
 </script>
 <style scoped>
@@ -121,8 +117,8 @@ export default {
     margin: 20px;
     border-radius: 10px;
 }
-.containd_Categorires{
-     height: 130px;
+.containd_Categorires {
+    height: 130px;
     overflow-y: scroll;
 }
 .selected {
@@ -150,46 +146,46 @@ form hr {
 }
 
 .alert {
-  display: none;
-  padding: 80px;
-  background-color: #f44336;
-  color: white;
-  position: absolute;
-  right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
+    display: none;
+    padding: 80px;
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
 }
 .alertt {
-  display: none;
-  padding: 80px;
-  color: white;
-  background-color: #00b618;
-  position: absolute;
-  right: 40%;
-  top: 30%;
-  z-index: 3;
-  font-size: 20px;
-  }
-.block{
+    display: none;
+    padding: 80px;
+    color: white;
+    background-color: #00b618;
+    position: absolute;
+    right: 40%;
+    top: 30%;
+    z-index: 3;
+    font-size: 20px;
+}
+.block {
     display: block;
 }
 
 .closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .closebtn:hover {
-  color: black;
+    color: black;
 }
-.upload_img{
+.upload_img {
     width: 50%;
     height: auto;
 }

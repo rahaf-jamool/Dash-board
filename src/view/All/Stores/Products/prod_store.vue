@@ -1,7 +1,8 @@
 <template>
     <div class="parent">
-               <div class="selected">
-            Store <span style="color: red">/{{this.$route.params.id}}</span><span style="color: red">/</span> Product
+        <div class="selected">
+            Store <span style="color: red">/{{ this.$route.params.id }}</span
+            ><span style="color: red">/</span> Product
         </div>
         <div class="new_product">
             <button @click="newProduct">New Product</button>
@@ -62,7 +63,7 @@ export default {
         }),
     },
     mounted() {
-  this.$store.dispatch('loadstore', this.$route.params.id);
+        this.$store.dispatch('loadstore', this.$route.params.id);
     },
 };
 </script>

@@ -33,7 +33,9 @@ export const loadDoctor = ({ commit }, DoctorID) => {
 };
 export const loadDoctorTrashed = ({ commit }) => {
     axios
-        .get(`http://doctors.e-dalely.com/public/api/doctor/getTrashed?lang=${lang}`)
+        .get(
+            `http://doctors.e-dalely.com/public/api/doctor/getTrashed?lang=${lang}`
+        )
         .then((res) => {
             console.warn('doctorstrashed :', res.data.doctor);
             let doctorstrashed = res.data.doctor;

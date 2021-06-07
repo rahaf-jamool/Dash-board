@@ -1,5 +1,5 @@
 <template>
-      <div class="parent">
+    <div class="parent">
         <div class="selected">Customs</div>
         <div class="New_Custom">
             <button @click="newCustom">New Custom</button>
@@ -21,41 +21,41 @@
                 >
                     Value
                 </div>
-            <div style="background-color: #ddd; padding: 20px" class="edit">
+                <div style="background-color: #ddd; padding: 20px" class="edit">
                     edit
                 </div>
-                <Custom 
+                <Custom
                     v-for="items in custom"
                     :key="items.pr"
-                    :id="items.id" 
+                    :id="items.id"
                     :name="items.name"
-                    :value="items.value"     
+                    :value="items.value"
                 />
             </div>
-
         </div>
     </div>
 </template>
 
 <script>
-import json from "../../../json/custom.json";
+import json from '../../../json/custom.json';
 import Custom from '../Custom field/Custom';
 export default {
     name: 'custom_dash',
-    components:{Custom},
+    components: { Custom },
     data() {
         return {
-         custom : json[0].Custome_field
+            custom: json[0].Custome_field,
         };
-    },methods:{
+    },
+    methods: {
         newCustom() {
             this.$router.push(`/new_custom`);
         },
         newValue() {
             this.$router.push(`/custome_value`);
         },
-    }
-}
+    },
+};
 </script>
 <style scoped>
 .parent {
@@ -67,10 +67,10 @@ export default {
         '. . selected New_Custom New_Custom New_Value New_Value . . .'
         '. . contain contain contain contain contain contain contain contain';
 }
-.New_Value{
+.New_Value {
     border-radius: 5px;
     grid-area: New_Value;
-    margin: 10px;  
+    margin: 10px;
 }
 
 .New_Custom {
@@ -78,7 +78,8 @@ export default {
     grid-area: New_Custom;
     margin: 10px;
 }
-.New_Custom button,.New_Value button {
+.New_Custom button,
+.New_Value button {
     border: none;
     background-color: #0eacc6;
     padding: 10px;
@@ -97,6 +98,6 @@ export default {
 }
 .nav__Custom {
     display: grid;
-    grid-template-areas:'id name Value edit'
+    grid-template-areas: 'id name Value edit';
 }
 </style>

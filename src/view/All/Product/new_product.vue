@@ -270,20 +270,20 @@ export default {
                 Small: 1,
             };
         },
-         handleImages(Imgs){
-               this.products.image = "http://localhost:8080/img/"+Imgs[0].name;
-                for (var i=0;i<Imgs.length;i++) {
-                     
-            this.products.images[i] = Imgs[i].name ;
-            this.products.images[i] = {image: Imgs[i].name,product_id: this.ProductID.id,
-            is_cover: i === 0 ? 1 : 0
-            }; 
-                }
-                console.log (this.products.images); 
+        handleImages(Imgs) {
+            this.products.image = 'http://localhost:8080/img/' + Imgs[0].name;
+            for (var i = 0; i < Imgs.length; i++) {
+                this.products.images[i] = Imgs[i].name;
+                this.products.images[i] = {
+                    image: Imgs[i].name,
+                    product_id: this.ProductID.id,
+                    is_cover: i === 0 ? 1 : 0,
+                };
             }
-            
+            console.log(this.products.images);
         },
-    
+    },
+
     computed: {
         ...mapState({
             Categories: (state) => state.All.Categories,

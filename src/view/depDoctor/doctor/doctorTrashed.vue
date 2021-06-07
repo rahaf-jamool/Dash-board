@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           <tr
+                            <tr
                                 class="text-center"
                                 v-for="items in doctorstrashed"
                                 :key="items.id"
@@ -45,7 +45,10 @@
                                 <td class="Action">
                                     <i class="fas fa-trash-restore mr-3"></i>
                                     <a class="text-danger"
-                                        ><i class="fa fa-trash-alt" @click="trashDoctor(items)"></i
+                                        ><i
+                                            class="fa fa-trash-alt"
+                                            @click="trashDoctor(items)"
+                                        ></i
                                     ></a>
                                 </td>
                             </tr>
@@ -72,7 +75,7 @@ export default {
     mounted() {
         this.$store.dispatch('loadDoctorTrashed');
     },
-     methods: {
+    methods: {
         trashDoctor(items) {
             this.$store.dispatch('trashDoctor', items);
         },
