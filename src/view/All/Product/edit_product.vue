@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="contain">
+        <div class="contain ml-5">
             <div class="alert" id="alert">
                 <span
                     class="closebtn"
