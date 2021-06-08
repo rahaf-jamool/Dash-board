@@ -28,56 +28,56 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr
-                                class="text-center"
-                                v-for="items in doctors"
-                                :key="items.id"
-                            >
-                                <td>
-                                    <input
-                                        style="margin: 0px 10px"
-                                        type="checkbox"
-                                    />
-                                    {{ items.id }}
-                                </td>
-                                <td>
-                                    <img v-lazy="`${items.image}`" />
-                                </td>
-                                <td>{{ items.first_name }}</td>
-                                <td>{{ items.last_name }}</td>
-                                <td>{{ items.description }}</td>
-                                <td>
-                                    <i
-                                        v-if="items.is_active == '1'"
-                                        class="fa fa-check"
-                                    ></i>
-                                    <i v-else class="fa fa-times"></i>
-                                </td>
-                                <td class="Action">
-                                    <router-link
-                                        :to="{
-                                            name: 'viewdoctor',
-                                        }"
-                                        class="text-info"
-                                        ><i class="fa fa-eye"></i
-                                    ></router-link>
-                                    <router-link
-                                        :to="{
-                                            name: 'editdoctor',
-                                        }"
-                                        class="text-success"
-                                        ><i class="fa fa-edit"></i
-                                    ></router-link>
-                                    <a class="text-danger"
-                                        ><i
-                                            class="fa fa-trash-alt"
-                                            @click="delDoctor(items)"
-                                        ></i
-                                    ></a>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <!--                        <tbody>-->
+                        <!--                            <tr-->
+                        <!--                                class="text-center"-->
+                        <!--                                v-for="items in doctors"-->
+                        <!--                                :key="items"-->
+                        <!--                            >-->
+                        <!--                                <td>-->
+                        <!--                                    <input-->
+                        <!--                                        style="margin: 0px 10px"-->
+                        <!--                                        type="checkbox"-->
+                        <!--                                    />-->
+                        <!--                                    &lt;!&ndash;                                    {{ items.id }}&ndash;&gt;-->
+                        <!--                                </td>-->
+                        <!--                                <td>-->
+                        <!--                                    <img v-lazy="`${items.image}`" />-->
+                        <!--                                </td>-->
+                        <!--                                <td>{{ items.first_name }}</td>-->
+                        <!--                                <td>{{ items.last_name }}</td>-->
+                        <!--                                <td>{{ items.description }}</td>-->
+                        <!--                                <td>-->
+                        <!--                                    <i-->
+                        <!--                                        v-if="items.is_active == '1'"-->
+                        <!--                                        class="fa fa-check"-->
+                        <!--                                    ></i>-->
+                        <!--                                    <i v-else class="fa fa-times"></i>-->
+                        <!--                                </td>-->
+                        <!--                                <td class="Action">-->
+                        <!--                                    <router-link-->
+                        <!--                                        :to="{-->
+                        <!--                                            name: 'viewdoctor',-->
+                        <!--                                        }"-->
+                        <!--                                        class="text-info"-->
+                        <!--                                        ><i class="fa fa-eye"></i-->
+                        <!--                                    ></router-link>-->
+                        <!--                                    <router-link-->
+                        <!--                                        :to="{-->
+                        <!--                                            name: 'editdoctor',-->
+                        <!--                                        }"-->
+                        <!--                                        class="text-success"-->
+                        <!--                                        ><i class="fa fa-edit"></i-->
+                        <!--                                    ></router-link>-->
+                        <!--                                    <a class="text-danger"-->
+                        <!--                                        ><i-->
+                        <!--                                            class="fa fa-trash-alt"-->
+                        <!--                                            @click="delDoctor(items)"-->
+                        <!--                                        ></i-->
+                        <!--                                    ></a>-->
+                        <!--                                </td>-->
+                        <!--                            </tr>-->
+                        <!--                        </tbody>-->
                     </table>
                 </div>
             </div>
