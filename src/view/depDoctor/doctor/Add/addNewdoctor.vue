@@ -33,6 +33,9 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="FirstName"
+                                            v-model="
+                                                doctors.doctor[2].first_name
+                                            "
                                             required
                                         />
                                     </div>
@@ -42,19 +45,25 @@
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="LastName"
+                                            v-model="
+                                                doctors.doctor[2].last_name
+                                            "
                                             required
                                         />
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input
                                             id="inputdescription"
                                             type="text"
                                             class="form-control form-control-lg"
                                             placeholder="Description"
+                                            v-model="
+                                                doctors.doctor[2].description
+                                            "
                                             required
                                         />
-                                    </div>
-                                    <div class="form-group">
+                                    </div> -->
+                                    <!-- <div class="form-group">
                                         <input
                                             id="div1"
                                             ondrop="drop(event)"
@@ -62,6 +71,7 @@
                                             type="text"
                                             class="form-control form-control-lg div1"
                                             placeholder="ImageURL"
+                                            v-model="doctors.image"
                                             required
                                         />
                                     </div>
@@ -109,7 +119,7 @@
                                             width="336"
                                             height="69"
                                         />
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <button
@@ -142,7 +152,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 // import NavAdd from './navAdd';
 export default {
@@ -157,26 +167,23 @@ export default {
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
                         first_name: 'fahed',
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
-                        first_name: 'رهف',
-                        last_name: 'رهف',
-                        description: 'فهدفهدفهدفهد',
+                        first_name: null,
+                        last_name: null,
+                        description: 'vhbgvhvh',
                         locale: 'ar',
-                        doctor_id: 1,
                     },
                 ],
                 is_active: 1,
                 is_approved: 1,
-                image: 'fafaffafa',
+                image: 'https://www.qries.com/images/banner_logo.png',
                 social_media_id: 1,
                 clinic_id: 1,
                 appointments_id: 1,
@@ -188,25 +195,22 @@ export default {
         };
     },
     methods: {
-        // postDoctor() {
-        //   axios.post(
-        //       'http://doctors.e-dalely.com/public/api/doctor/create',
-        //       this.doctors
-        //   );
-        //   if (
-        //       this.doctors.doctor[2].first_name == null ||
-        //       this.doctors.doctor[2].last_name == null ||
-        //       this.doctors.doctor[2].description == null ||
-        //       this.doctor.image == null
-        //   ) {
-        //     document.getElementById('alert').classList.add('block');
-        //   } else {
-        //     document.getElementById('alert').classList.remove('block');
-        //     document.getElementById('alertt').classList.add('block');
-        //     console.log(JSON.stringify(this.doctors));
-        //     this.$router.push({ name: 'doctor' });
-        //   }
-        // },
+        postDoctor() {
+            axios.post('/api/doctor/create', this.doctors);
+            if (
+                this.doctors.doctor[2].first_name == null ||
+                this.doctors.doctor[2].last_name == null
+                // this.doctors.doctor[2].description == null ||
+                // this.doctors.image == null
+            ) {
+                document.getElementById('alert').classList.add('block');
+            } else {
+                document.getElementById('alert').classList.remove('block');
+                document.getElementById('alertt').classList.add('block');
+                console.log(JSON.stringify(this.doctors));
+                // this.$router.push({ name: 'doctor' });
+            }
+        },
         allowDrop(ev) {
             ev.preventDefault();
         },
