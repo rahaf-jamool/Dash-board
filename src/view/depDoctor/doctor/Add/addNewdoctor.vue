@@ -1,7 +1,8 @@
 <template>
     <div class="col-xs-12 m-2" style="display: flex">
         <div class="col-9 ml-5">
-            <h5 class="modal-title">Update Doctore</h5>
+            <!--            <nav-add></nav-add>-->
+            <h5 class="modal-title">Add New Doctore</h5>
             <div class="row">
                 <div id="overlay1 mt-5 col-9">
                     <div class="modal-dialog">
@@ -50,7 +51,7 @@
                                             required
                                         />
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <input
                                             id="inputdescription"
                                             type="text"
@@ -61,8 +62,8 @@
                                             "
                                             required
                                         />
-                                    </div>
-                                    <div class="form-group">
+                                    </div> -->
+                                    <!-- <div class="form-group">
                                         <input
                                             id="div1"
                                             ondrop="drop(event)"
@@ -77,55 +78,55 @@
                                     <br />
                                     <div style="display: flex">
                                         <img
-                                            src="../../../../public/img/aa.jpg"
+                                            src="../../../../../public/img/aa.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
                                         <img
-                                            src="../../../../public/img/elctronic.jpg"
+                                            src="../../../../../public/img/elctronic.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
                                         <img
-                                            src="../../../../public/img/buty.jpg"
+                                            src="../../../../../public/img/buty.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
                                         <img
-                                            src="../../../../public/img/kitchen.jpg"
+                                            src="../../../../../public/img/kitchen.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
                                         <img
-                                            src="../../../../public/img/gasses.jpg"
+                                            src="../../../../../public/img/gasses.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
                                         <img
-                                            src="../../../../public/img/rr.jpg"
+                                            src="../../../../../public/img/rr.jpg"
                                             draggable="true"
                                             ondragstart="drag(event)"
                                             width="336"
                                             height="69"
                                         />
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <button
                                             class="btn btn-info btn-block btn-lg"
-                                            @click="putDoctor()"
+                                            @click="postDoctor()"
                                         >
-                                            Update Doctor
+                                            Add Doctor
                                         </button>
                                     </div>
                                 </div>
@@ -151,10 +152,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import axios from 'axios';
+
+// import NavAdd from './navAdd';
 export default {
-    name: 'editdoctor',
+    name: 'addNewdoctor',
+    // components: { NavAdd },
     data() {
         return {
             doctors: {
@@ -164,26 +167,23 @@ export default {
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
                         first_name: 'fahed',
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
-                        first_name: 'رهف',
-                        last_name: 'رهف',
-                        description: 'فهدفهدفهدفهد',
+                        first_name: null,
+                        last_name: null,
+                        description: 'vhbgvhvh',
                         locale: 'ar',
-                        doctor_id: 1,
                     },
                 ],
                 is_active: 1,
                 is_approved: 1,
-                image: 'fafaffafa',
+                image: 'https://www.qries.com/images/banner_logo.png',
                 social_media_id: 1,
                 clinic_id: 1,
                 appointments_id: 1,
@@ -195,16 +195,13 @@ export default {
         };
     },
     methods: {
-        putDoctor() {
-            axios.put(
-                'http://doctors.e-dalely.com/public/api/doctor/update/',
-                this.doctors
-            );
+        postDoctor() {
+            axios.post('/api/doctor/create', this.doctors);
             if (
                 this.doctors.doctor[2].first_name == null ||
-                this.doctors.doctor[2].last_name == null ||
-                this.doctors.doctor[2].description == null ||
-                this.doctor.image == null
+                this.doctors.doctor[2].last_name == null
+                // this.doctors.doctor[2].description == null ||
+                // this.doctors.image == null
             ) {
                 document.getElementById('alert').classList.add('block');
             } else {
@@ -236,14 +233,6 @@ export default {
         //         };
         //     }
         // },
-    },
-    computed: {
-        ...mapState({
-            DoctorID: (state) => state.Doctors.DoctorID,
-        }),
-    },
-    mounted() {
-        this.$store.dispatch('loadDoctor', this.$route.params.id);
     },
 };
 </script>
