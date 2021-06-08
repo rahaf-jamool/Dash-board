@@ -152,18 +152,18 @@ const routes = [
     {
         path: '/newdoctor',
         name: 'addNewdoctor',
-        component: () => import('../view/depDoctor/doctor/addNewdoctor'),
+        component: () => import('../view/depDoctor/doctor/Add/addNewdoctor'),
     },
     {
         path: '/editdoctor',
         name: 'editdoctor',
-        component: () => import('../view/depDoctor/doctor/editDoctor'),
+        component: () => import('../view/depDoctor/doctor/Edit/editDoctor'),
         params: true,
     },
     {
         path: '/viewdoctor',
         name: 'viewdoctor',
-        component: () => import('../view/depDoctor/doctor/viewDoctor'),
+        component: () => import('../view/depDoctor/doctor/View/viewDoctor'),
         params: true,
     },
 ];
