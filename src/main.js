@@ -12,6 +12,8 @@ import 'animate.css';
 import axios from 'axios';
 import 'jquery';
 import VueLazyload from 'vue-lazyload';
+import JwPagination from 'jw-vue-pagination';
+Vue.component('jw-pagination', JwPagination);
 import 'bootstrap';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';

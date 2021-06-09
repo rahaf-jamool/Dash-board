@@ -14,6 +14,12 @@
                         </router-link>
                     </div>
                     <hr class="bg-info mt-5" />
+                    <div class="card pt-3">
+                        <jw-pagination
+                            :items="exampleItems"
+                            @changePage="onChangePage"
+                        ></jw-pagination>
+                    </div>
                 </div>
                 <div class="nav_Product">
                     <table class="table table-striped product">
@@ -85,9 +91,18 @@
 <script>
 import Dosctors from './dosctors';
 import { mapState } from 'vuex';
+const exampleItems = [...Array(150).keys()].map((i) => ({
+    id: i + 1,
+    name: 'Item ' + (i + 1),
+}));
 export default {
     name: 'doctor',
     components: { Dosctors },
+    data() {
+        return {
+            exampleItems,
+        };
+    },
     computed: {
         ...mapState({
             doctors: (state) => state.Doctors.doctors,
@@ -99,6 +114,13 @@ export default {
     methods: {
         // delDoctor(items) {
         //     this.$store.dispatch('deleteDoctor', items);
+        // },
+        onChangePage(doctors) {
+            this.$store.state.Doctors.doctors = doctors;
+        },
+        // onChangePage(doctors) {
+        //     // update page of items
+        //     this.doctors = doctors;
         // },
     },
 };
@@ -173,5 +195,9 @@ input[type='text'] {
     input[type='text'] {
         border: 1px solid #ccc;
     }
+}
+.pagination {
+    justify-content: center;
+    flex-wrap: wrap;
 }
 </style>
