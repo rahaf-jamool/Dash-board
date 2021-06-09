@@ -53,3 +53,28 @@ export const trashDoctor = ({ commit }, items) => {
         commit('Trash_Doctor', items.id)
     );
 };
+//hospital
+export const loadHospitals = ({ commit }) => {
+    axios
+        .get(`/api/Hospital/get`)
+        .then((res) => {
+            console.warn('Hospitals :', res.data.Hospital);
+            let Hospitals = res.data.Hospital;
+            commit('SET_Hospitals', Hospitals);
+        })
+        .catch(function (error) {
+            console.log('Error: ', error);
+        });
+};
+export const loadHospital = ({ commit }, HospitalID) => {
+    axios
+        .get(`/api/Hospital/getById/${HospitalID}`)
+        .then((res) => {
+            console.warn('HospitalID :', res.data.Hospital);
+            let HospitalID = res.data.Hospital;
+            commit('SET_HospitalID', HospitalID);
+        })
+        .catch(function (error) {
+            console.log('Error: ', error);
+        });
+};

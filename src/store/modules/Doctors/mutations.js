@@ -16,3 +16,10 @@ export const Trash_Doctor = (state, itemsId) => {
     let doctorstrashed = state.doctorstrashed.filter((v) => v.id != itemsId);
     state.doctorstrashed = doctorstrashed;
 };
+//
+export const SET_Hospitals = (state, Hospitals) => {
+    state.Hospitals = Hospitals;
+};
+export const SET_HospitalID = (state, HospitalID) => {
+    state.HospitalID = HospitalID;
+};

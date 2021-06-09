@@ -48,6 +48,11 @@
                             >All Doctor</router-link
                         >
                     </li>
+                    <li>
+                        <router-link to="/admin/hospital" class="a"
+                            >All Hospital</router-link
+                        >
+                    </li>
                 </ul>
             </li>
         </ul>
