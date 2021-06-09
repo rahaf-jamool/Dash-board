@@ -19,28 +19,28 @@
                     <table class="table table-striped product">
                         <thead>
                             <tr class="text-center bg-info text-light">
-                                <th class="id">Id</th>
+                                <!-- <th class="id">Id</th> -->
                                 <th class="img">Image</th>
                                 <th class="name">FirstName</th>
                                 <th>LastName</th>
-                                <th class="status">Description</th>
-                                <th class="edit">Status</th>
+                                <th>Description</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr
                                 class="text-center"
-                                v-for="items in doctors"
-                                :key="items"
+                                v-for="(items, i) in doctors"
+                                :key="i"
                             >
-                                <td>
+                                <!-- <td>
                                     <input
                                         style="margin: 0px 10px"
                                         type="checkbox"
                                     />
-                                    <!--                                    {{ items.id }}-->
-                                </td>
+                                    {{ items.id }}
+                                </td> -->
                                 <td>
                                     <img v-lazy="`${items.image}`" />
                                 </td>
@@ -70,10 +70,7 @@
                                         ><i class="fa fa-edit"></i
                                     ></router-link>
                                     <a class="text-danger"
-                                        ><i
-                                            class="fa fa-trash-alt"
-                                            @click="delDoctor(items)"
-                                        ></i
+                                        ><i class="fa fa-trash-alt"></i
                                     ></a>
                                 </td>
                             </tr>
@@ -100,9 +97,9 @@ export default {
         this.$store.dispatch('loadDoctors');
     },
     methods: {
-        delDoctor(items) {
-            this.$store.dispatch('deleteDoctor', items);
-        },
+        // delDoctor(items) {
+        //     this.$store.dispatch('deleteDoctor', items);
+        // },
     },
 };
 </script>

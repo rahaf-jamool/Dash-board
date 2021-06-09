@@ -164,26 +164,23 @@ export default {
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
                         first_name: 'fahed',
                         last_name: 'fahed',
                         description: 'fahedfahedfahedfahed',
                         locale: 'en',
-                        doctor_id: 1,
                     },
                     {
                         first_name: 'رهف',
                         last_name: 'رهف',
                         description: 'فهدفهدفهدفهد',
                         locale: 'ar',
-                        doctor_id: 1,
                     },
                 ],
                 is_active: 1,
                 is_approved: 1,
-                image: 'fafaffafa',
+                image: 'https://www.qries.com/images/banner_logo.png',
                 social_media_id: 1,
                 clinic_id: 1,
                 appointments_id: 1,
@@ -197,7 +194,7 @@ export default {
     methods: {
         putDoctor() {
             axios.put(
-                'http://doctors.e-dalely.com/public/api/doctor/update/',
+                'http://edalili.e-dalely.com/public/api/doctor/update/',
                 this.doctors
             );
             if (
