@@ -166,28 +166,6 @@ const routes = [
         component: () => import('../view/depDoctor/doctor/View/viewDoctor'),
         params: true,
     },
-    ///hospital
-    {
-        path: '/admin/hospital',
-        name: 'hospital_dash',
-        component: () => import('../view/depDoctor/hospital/hospital_dash'),
-    },
-    {
-        path: '/newhospital',
-        name: 'addNewhospital',
-        component: () =>
-            import('../view/depDoctor/hospital/Add/addNewhospital'),
-    },
-    {
-        path: '/edithospital',
-        name: 'editHospital',
-        component: () => import('../view/depDoctor/hospital/Edit/editHospital'),
-    },
-    {
-        path: '/viewhospital',
-        name: 'viewHospital',
-        component: () => import('../view/depDoctor/hospital/View/viewHospital'),
-    },
 ];
 
 const router = new VueRouter({
